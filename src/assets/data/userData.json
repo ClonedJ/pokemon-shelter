@@ -1,0 +1,24 @@
+{
+  "emp1": {
+    "type": "employee",
+    "password": "abcd1234",
+    "firstName": "Haru",
+    "lastName": "Fukuhara",
+    "email": "haru@gmail.com",
+    "phoneNum": "09123456789",
+    "street": "unknown",
+    "city": "unknown",
+    "region": "unknown"
+  },
+  "user1": {
+    "type": "trainer",
+    "password": "abcd1234",
+    "firstName": "Ash",
+    "lastName": "Ketchum",
+    "email": "ashketchum@gmail.com",
+    "phoneNum": "09123456788",
+    "street": "Numbus St.",
+    "city": "Pallet Town",
+    "region": "Kanto Region"
+  }
+}

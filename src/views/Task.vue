@@ -1,4 +1,4 @@
 <script setup></script>
 <template>
-  <h1>ABOUT</h1>
+  <h1>TASKS</h1>
 </template>
