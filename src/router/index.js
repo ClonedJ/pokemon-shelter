@@ -3,6 +3,9 @@ import HomeView from "../views/Home.vue";
 import PackageView from "../views/Package.vue";
 import GalleryView from "../views/Gallery.vue";
 import AboutView from "../views/About.vue";
+import TaskView from "../views/Task.vue";
+import TrainerView from "../views/Trainer.vue";
+import AccountView from "../views/Account.vue";
 import LoginView from "../views/Login.vue";
 
 const router = createRouter({
@@ -27,6 +30,21 @@ const router = createRouter({
       path: "/about",
       name: "about",
       component: AboutView,
+    },
+    {
+      path: "/tasks",
+      name: "tasks",
+      component: TaskView,
+    },
+    {
+      path: "/trainers",
+      name: "trainers",
+      component: TrainerView,
+    },
+    {
+      path: "/account",
+      name: "account",
+      component: AccountView,
     },
     {
       path: "/login",
