@@ -17,5 +17,5 @@ const clearUser = () => {
 
 <template>
   <Navbar :user="user" @clearUser="clearUser"/>
-  <RouterView @updateUser="updateUser"/>
+  <RouterView :user="user" @updateUser="updateUser"/>
 </template>

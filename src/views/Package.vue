@@ -1,16 +1,22 @@
 <script setup>
 import packages from "../assets/data/packageData.json";
+import { parseString } from "../utils/dataParser.js";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const submit = (event, packageName) => {
+  const parsedPackageName = parseString(packageName); //ex. "Basic Care" become "basic-care"
+  router.push("/package/" + parsedPackageName);
+  event.preventDefault();
+};
 </script>
 <template>
-  <div v-for="(packagee, i) in packages.data" :key="i">
-    <h1>{{ packagee.name }}</h1>
-    <h3>{{ packagee.description }}</h3>
-    <br />
-    <h2>Services:</h2>
-    <div v-for="(service, j) in packagee.services" :key="j">
-      <h3>{{ j + 1 + ". " + service }}</h3>
-    </div>
-    <br />
-    <br />
+  <div
+    v-for="(packageData, i) in packages.data"
+    :key="i"
+    @click="submit($event, packageData.name)"
+  >
+    <h1>{{ packageData.name }}</h1>
+    <h3>{{ packageData.description }}</h3>
   </div>
 </template>

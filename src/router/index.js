@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/Home.vue";
 import PackageView from "../views/Package.vue";
+import PackageReserveView from "../views/PackageReserve.vue";
 import GalleryView from "../views/Gallery.vue";
 import AboutView from "../views/About.vue";
 import TaskView from "../views/Task.vue";
@@ -20,6 +21,11 @@ const router = createRouter({
       path: "/package",
       name: "package",
       component: PackageView,
+    },
+    {
+      path: "/package/:id",
+      name: "package-reserve",
+      component: PackageReserveView,
     },
     {
       path: "/gallery",
