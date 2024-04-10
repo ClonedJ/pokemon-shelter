@@ -1,9 +1,8 @@
 <script setup>
-import { validateUserCred } from "../utils/user.js";
-import { ref, defineEmits } from "vue";
+import { validateUserCred, login } from "../utils/user.js";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
-const emit = defineEmits(["updateUser"]);
 const router = useRouter();
 
 const form = ref({
@@ -14,7 +13,7 @@ const form = ref({
 const submit = (event) => {
   const user = validateUserCred(form.value);
   if (user) {
-    emit("updateUser", user);
+    login(user);
     alert("Login successful");
     router.push("/");
   } else {

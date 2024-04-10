@@ -1,11 +1,11 @@
 <script setup>
-import { parseUrl } from "../utils/dataParser.js";
-import { getPackageData } from "../utils/package.js";
-import { fileReservation } from "../utils/reservation.js";
-import { ref, defineProps } from "vue";
+import { parseUrl } from "@/utils/dataParser.js";
+import { getPackageData } from "@/utils/package.js";
+import { fileReservation } from "@/utils/reservation.js";
+import { currentUser } from "@/utils/user.js";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
-const { user } = defineProps(["user"]);
 const router = useRouter();
 
 const packageUrl = router.currentRoute._value.params.id;
@@ -14,7 +14,7 @@ const packageData = getPackageData(packageKey);
 
 const showModal = ref(false);
 const form = ref({
-  user: user.creds.username,
+  user: currentUser.creds.username,
   package: packageData.name,
   pokemon: {
     name: "",
@@ -30,7 +30,7 @@ const form = ref({
 });
 
 const openModal = () => {
-  if (user.type == "trainer") {
+  if (currentUser.type == "trainer") {
     showModal.value = true;
   } else {
     alert("Please login to reserve a package");
@@ -42,7 +42,7 @@ const closeModal = () => {
 };
 
 const submit = (event) => {
-  if (user.type == "trainer") {
+  if (currentUser.type == "trainer") {
     fileReservation(form.value);
     alert("You have successfully reserved!");
   } else {
