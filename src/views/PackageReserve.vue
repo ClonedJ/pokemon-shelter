@@ -1,6 +1,7 @@
 <script setup>
 import { parseUrl } from "../utils/dataParser.js";
 import { getPackageData } from "../utils/package.js";
+import { fileReservation } from "../utils/reservation.js";
 import { ref, defineProps } from "vue";
 import { useRouter } from "vue-router";
 
@@ -13,13 +14,19 @@ const packageData = getPackageData(packageKey);
 
 const showModal = ref(false);
 const form = ref({
-  name: "",
-  specie: "",
-  age: 0,
-  checkInDate: "",
-  checkInTime: "",
-  checkOutDate: "",
-  checkOutTime: "",
+  user: user.creds.username,
+  package: packageData.name,
+  pokemon: {
+    name: "",
+    specie: "",
+    age: 0,
+  },
+  reservation: {
+    checkInDate: "",
+    checkInTime: "",
+    checkOutDate: "",
+    checkOutTime: "",
+  },
 });
 
 const openModal = () => {
@@ -35,8 +42,8 @@ const closeModal = () => {
 };
 
 const submit = (event) => {
-  console.log(JSON.stringify(form.value));
   if (user.type == "trainer") {
+    fileReservation(form.value);
     alert("You have successfully reserved!");
   } else {
     alert("Something went wrong!");
@@ -59,22 +66,22 @@ const submit = (event) => {
   <form v-show="showModal">
     <h2>Pokemon Information</h2>
     <label for="name">Name:</label>
-    <input type="text" v-model="form.name" /><br />
+    <input type="text" v-model="form.pokemon.name" /><br />
 
     <label for="specie">Specie:</label>
-    <input type="text" v-model="form.specie" /><br />
+    <input type="text" v-model="form.pokemon.specie" /><br />
 
     <label for="age">Age:</label>
-    <input type="number" v-model="form.age" /><br /><br />
+    <input type="number" v-model="form.pokemon.age" /><br /><br />
 
     <h2>Reservation Information</h2>
     <label for="checkIn">Check-In:</label>
-    <input type="date" v-model="form.checkInDate" />
-    <input type="time" v-model="form.checkInTime" /><br />
+    <input type="date" v-model="form.reservation.checkInDate" />
+    <input type="time" v-model="form.reservation.checkInTime" /><br />
 
     <label for="checkOut">Check-Out:</label>
-    <input type="date" v-model="form.checkOutDate" />
-    <input type="time" v-model="form.checkOutTime" /><br /><br />
+    <input type="date" v-model="form.reservation.checkOutDate" />
+    <input type="time" v-model="form.reservation.checkOutTime" /><br /><br />
 
     <button type="button" @click="closeModal()">Close</button>
     <button @click="submit($event)">Submit</button>
