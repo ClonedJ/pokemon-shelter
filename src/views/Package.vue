@@ -1,6 +1,6 @@
 <script setup>
-import packages from "../assets/data/packageData.json";
-import { parseString } from "../utils/dataParser.js";
+import { packages } from "@/utils/package.js";
+import { parseString } from "@/utils/dataParser.js";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
@@ -12,7 +12,7 @@ const submit = (event, packageName) => {
 </script>
 <template>
   <div
-    v-for="(packageData, i) in packages.data"
+    v-for="(packageData, i) in packages"
     :key="i"
     @click="submit($event, packageData.name)"
   >

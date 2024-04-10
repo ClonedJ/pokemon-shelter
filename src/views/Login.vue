@@ -1,5 +1,5 @@
 <script setup>
-import { validateUserCred, login } from "../utils/user.js";
+import { validateUserCred, login } from "@/utils/user.js";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
