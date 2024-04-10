@@ -1,65 +1,27 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { currentUser, logout } from "@/utils/user";
+
+const items = {
+  employee: ["Home", "Tasks", "Trainers", "Reservations", "Logout"],
+  trainer: ["Home", "Package", "Gallery", "About", "Logout"],
+  guest: ["Home", "Package", "Gallery", "About", "Login"],
+};
+
+const colors = ["lime-800", "yellow-900", "amber-400", "cyan-600", "cyan-600"];
 </script>
 
 <template>
-  <div>
-    <RouterLink to="/" active-class="active">HOME</RouterLink><br />
+  <div class="flex space-x-4 justify-center rounded-full bg-white mt-8">
     <RouterLink
-      v-if="currentUser.type != 'employee'"
-      to="/package"
+      v-for="(item, index) in items[currentUser ? currentUser.type : 'guest']"
+      :key="index"
+      @click="item == 'Logout' && logout()"
+      :to="`/${(item != 'Home' || item != 'Logout') && item}`"
       active-class="active"
-      >PACKAGE</RouterLink
-    ><br />
-    <RouterLink
-      v-if="currentUser.type != 'employee'"
-      to="/gallery"
-      active-class="active"
-      >GALLERY</RouterLink
-    ><br />
-    <RouterLink
-      v-if="currentUser.type != 'employee'"
-      to="/about"
-      active-class="active"
-      >ABOUT</RouterLink
-    ><br />
-    <RouterLink
-      v-if="currentUser.type == 'employee'"
-      to="/tasks"
-      active-class="active"
-      >TASKS</RouterLink
-    ><br />
-    <RouterLink
-      v-if="currentUser.type == 'employee'"
-      to="/trainers"
-      active-class="active"
-      >TRAINERS</RouterLink
-    ><br />
-    <RouterLink
-      v-if="currentUser.type == 'employee'"
-      to="/reservations"
-      active-class="active"
-      >RESERVATIONS</RouterLink
-    ><br />
-    <RouterLink
-      v-if="currentUser.type == 'trainer'"
-      to="/account"
-      active-class="active"
-      >ACCOUNT</RouterLink
-    ><br />
-    <RouterLink
-      v-if="currentUser.type == 'guest'"
-      to="/login"
-      active-class="active"
-      >LOGIN</RouterLink
-    ><br />
-    <RouterLink
-      v-if="currentUser.type != 'guest'"
-      @click="logout"
-      to="/"
-      active-class="active"
-      >LOGOUT</RouterLink
-    ><br />
+      :class="`px-12 py-4 uppercase font-semibold rounded-full hover:bg-${colors[index]}`"
+    >
+      {{ item }}
+    </RouterLink>
   </div>
 </template>
