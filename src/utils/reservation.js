@@ -1,4 +1,6 @@
-export const reservations = [
+import { reactive } from "vue";
+
+export const reservations = reactive([
   {
     id: "RSV00001",
     user: "user1",
@@ -16,7 +18,7 @@ export const reservations = [
       checkOutTime: "12:00",
     },
   },
-];
+]);
 
 const getNewId = () => {
   const maxId = parseInt(
@@ -31,4 +33,12 @@ export const fileReservation = (form) => {
   form.id = getNewId();
   form.state = "Pending";
   reservations.push(form);
+};
+
+export const acceptReservation = (reservation) => {
+  reservation.state = "Reserved";
+};
+
+export const rejectReservation = (reservation) => {
+  reservation.state = "Rejected";
 };

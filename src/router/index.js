@@ -6,6 +6,7 @@ import GalleryView from "@/views/Gallery.vue";
 import AboutView from "@/views/About.vue";
 import TaskView from "@/views/Task.vue";
 import TrainerView from "@/views/Trainer.vue";
+import ReservationView from "@/views/Reservation.vue";
 import AccountView from "@/views/Account.vue";
 import LoginView from "@/views/Login.vue";
 
@@ -46,6 +47,11 @@ const router = createRouter({
       path: "/trainers",
       name: "trainers",
       component: TrainerView,
+    },
+    {
+      path: "/reservations",
+      name: "reservations",
+      component: ReservationView,
     },
     {
       path: "/account",

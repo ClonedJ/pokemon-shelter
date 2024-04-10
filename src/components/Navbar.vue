@@ -37,6 +37,12 @@ import { currentUser, logout } from "@/utils/user";
       >TRAINERS</RouterLink
     ><br />
     <RouterLink
+      v-if="currentUser.type == 'employee'"
+      to="/reservations"
+      active-class="active"
+      >RESERVATIONS</RouterLink
+    ><br />
+    <RouterLink
       v-if="currentUser.type == 'trainer'"
       to="/account"
       active-class="active"
