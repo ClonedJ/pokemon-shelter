@@ -1,3 +1,5 @@
+import { reactive } from "vue";
+
 const users = [
   {
     type: "employee",
@@ -33,24 +35,26 @@ const users = [
   },
 ];
 
-export var currentUser = { type: "guest" };
+export const currentUser = reactive({
+  type: "guest",
+});
 
 export const validateUserCred = (creds) => {
-  for (const userObj of users) {
+  for (const user of users) {
     if (
-      userObj.creds.username == creds.username &&
-      userObj.creds.password == creds.password
+      user.creds.username == creds.username &&
+      user.creds.password == creds.password
     ) {
-      return userObj;
+      return user;
     }
   }
   return null;
 };
 
 export const login = (newUser) => {
-  currentUser = newUser;
+  Object.assign(currentUser, newUser);
 };
 
 export const logout = () => {
-  currentUser = { type: "guest" };
+  Object.assign(currentUser, { type: "guest" });
 };
