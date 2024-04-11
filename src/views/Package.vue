@@ -2,6 +2,7 @@
 import { packages } from "@/utils/package.js";
 import { parseString } from "@/utils/dataParser.js";
 import { useRouter } from "vue-router";
+import ListItem from "@/components/ListItem.vue";
 const router = useRouter();
 
 const submit = (event, packageName) => {
@@ -11,13 +12,13 @@ const submit = (event, packageName) => {
 };
 </script>
 <template>
-  <div
-    v-for="(packageData, i) in packages"
-    :key="i"
-    @click="submit($event, packageData.name)"
-  >
-    <h1>{{ packageData.name }}</h1>
-    <h3>{{ packageData.description }}</h3>
-    <br />
+  <div class="flex flex-col items-center space-y-8">
+    <ListItem
+      v-for="(packageData, i) in packages"
+      :key="i"
+      @click="submit($event, packageData.name)"
+      :package-name="packageData.name"
+      :package-desc="packageData.description"
+    />
   </div>
 </template>
