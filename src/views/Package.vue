@@ -18,5 +18,6 @@ const submit = (event, packageName) => {
   >
     <h1>{{ packageData.name }}</h1>
     <h3>{{ packageData.description }}</h3>
+    <br />
   </div>
 </template>
