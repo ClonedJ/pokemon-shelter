@@ -47,7 +47,7 @@
 body {
   min-height: 100vh;
   /* color: var(--color-text); */
-  background: #2c3e50;
+  /* background: #2c3e50; */
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -57,4 +57,27 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.bg-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  @apply h-[100svh] w-[100svw] fixed -z-10;
+}
+
+.bg-image-1 {
+  background-image: url("/src/assets/images/bgImages/fabric1.jpg");
+}
+
+.bg-image-2 {
+  background-image: url("/src/assets/images/bgImages/fabric2.jpg");
+}
+
+.bg-image-3 {
+  background-image: url("/src/assets/images/bgImages/fabric3.jpg");
+}
+
+.bg-image-4 {
+  background-image: url("/src/assets/images/bgImages/fabric4.jpg");
 }

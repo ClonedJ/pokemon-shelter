@@ -6,6 +6,7 @@ import {
 } from "@/utils/reservation";
 </script>
 <template>
+  <div class="bg-image bg-image-3"></div>
   <div v-for="(reservation, i) in reservations" :key="i">
     <template v-if="reservation.state === 'Reserved'">
       <h1>Name: {{ reservation.pokemon.name }}</h1>

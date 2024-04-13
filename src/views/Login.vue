@@ -24,13 +24,25 @@ const submit = (event) => {
 </script>
 
 <template>
-  <form>
-    <label for="username">Username:</label>
-    <input type="text" v-model="form.username" /><br />
+  <div class="bg-image bg-image-1"></div>
+  <div class="right-section w-1/2"></div>
+  <div class="w-1/2 flex">
+    <form class="bg-white rounded-2xl">
+      <label for="username">Username:</label>
+      <input type="text" v-model="form.username" /><br />
 
-    <label for="password">Password:</label>
-    <input type="password" v-model="form.password" /><br />
+      <label for="password">Password:</label>
+      <input type="password" v-model="form.password" /><br />
 
-    <button @click="submit($event)">Login</button>
-  </form>
+      <button @click="submit($event)">Login</button>
+    </form>
+  </div>
 </template>
+
+<style scoped>
+.right-section {
+  background-image: url("/src/assets/images/snorlax.jpg");
+  background-repeat: no-repeat;
+  @apply h-[100svh] fixed right-0;
+}
+</style>

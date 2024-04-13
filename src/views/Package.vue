@@ -12,7 +12,14 @@ const submit = (event, packageName) => {
 };
 </script>
 <template>
-  <div class="flex flex-col items-center space-y-8">
+  <div class="bg-image bg-image-2"></div>
+  <div class="flex w-10/12 justify-end relative">
+    <input type="text" class="rounded-3xl w-1/3 p-2" />
+    <img alt="search icon" src="" class="absolute" />
+  </div>
+  <div
+    class="flex w-10/12 flex-col mt-8 mb-8 overflow-auto items-center space-y-8 rounded-2xl"
+  >
     <ListItem
       v-for="(packageData, i) in packages"
       :key="i"
