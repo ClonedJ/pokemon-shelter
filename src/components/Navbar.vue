@@ -19,7 +19,7 @@ const colors = ["lime-800", "yellow-900", "amber-400", "cyan-600", "cyan-600"];
         :key="index"
         @click="item == 'logout' && logout()"
         :to="`/${item == 'home' || item == 'logout' ? '' : item}`"
-        active-class="active"
+        :active-class="item == 'logout' ? '' : 'active'"
         :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white`"
       >
         {{ item }}
