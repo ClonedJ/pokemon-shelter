@@ -1,6 +1,7 @@
 <script setup>
-import { RouterLink } from "vue-router";
+import { RouterLink, useRoute } from "vue-router";
 import { currentUser, logout } from "@/utils/user";
+import { watch } from "vue";
 
 const items = {
   employee: ["home", "tasks", "trainers", "reservations", "logout"],
@@ -9,10 +10,15 @@ const items = {
 };
 
 const colors = ["lime-800", "yellow-900", "amber-400", "cyan-600", "cyan-600"];
+const router = useRoute();
+watch(router);
 </script>
 
 <template>
-  <div class="z-50 w-full flex justify-center my-8">
+  <div
+    v-if="router.name != 'login'"
+    class="z-50 w-full flex justify-center my-8"
+  >
     <div class="bg-white w-10/12 rounded-full flex shadow-2xl justify-between">
       <RouterLink
         v-for="(item, index) in items[currentUser ? currentUser.type : 'guest']"
