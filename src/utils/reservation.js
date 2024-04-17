@@ -5,7 +5,7 @@ import { addPokemon } from "./pokemon";
 export const reservations = reactive([
   {
     id: "RSV00001",
-    user: "USR00002",
+    user: "USR00001",
     state: "Pending",
     package: "Basic Care",
     pokemon: "PKM00001",
@@ -18,7 +18,7 @@ export const reservations = reactive([
   },
   {
     id: "RSV00002",
-    user: "USR00003",
+    user: "USR00002",
     state: "Pending",
     package: "Basic Care",
     pokemon: "PKM00002",

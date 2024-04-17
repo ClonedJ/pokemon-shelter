@@ -2,7 +2,7 @@ import { reactive } from "vue";
 
 export const users = [
   {
-    id: "USR00001",
+    id: "USR00000",
     type: "employee",
     creds: {
       username: "emp1",
@@ -19,7 +19,7 @@ export const users = [
     },
   },
   {
-    id: "USR00002",
+    id: "USR00001",
     type: "trainer",
     creds: {
       username: "user1",
@@ -36,7 +36,7 @@ export const users = [
     },
   },
   {
-    id: "USR00003",
+    id: "USR00002",
     type: "trainer",
     creds: {
       username: "user2",
@@ -48,6 +48,57 @@ export const users = [
       email: "johndoe@gmail.com",
       phoneNum: "09123456787",
       street: "Kalye St.",
+      city: "Pallet Town",
+      region: "Kanto Region",
+    },
+  },
+  {
+    id: "USR00003",
+    type: "trainer",
+    creds: {
+      username: "user3",
+      password: "abcd1234",
+    },
+    profile: {
+      firstName: "Jane",
+      lastName: "Doe",
+      email: "janedoe@gmail.com",
+      phoneNum: "09123456786",
+      street: "Kalye St.",
+      city: "Pallet Town",
+      region: "Kanto Region",
+    },
+  },
+  {
+    id: "USR00004",
+    type: "trainer",
+    creds: {
+      username: "user4",
+      password: "abcd1234",
+    },
+    profile: {
+      firstName: "Isamu",
+      lastName: "Akai",
+      email: "isamuakai@gmail.com",
+      phoneNum: "09123456785",
+      street: "Numbus St.",
+      city: "Pallet Town",
+      region: "Kanto Region",
+    },
+  },
+  {
+    id: "USR00005",
+    type: "trainer",
+    creds: {
+      username: "user5",
+      password: "abcd1234",
+    },
+    profile: {
+      firstName: "Vedal",
+      lastName: "AI",
+      email: "vedalai@gmail.com",
+      phoneNum: "09123456784",
+      street: "Ai St.",
       city: "Pallet Town",
       region: "Kanto Region",
     },
