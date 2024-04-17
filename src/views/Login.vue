@@ -28,31 +28,35 @@ const submit = (event) => {
   <div class="flex grow w-full">
     <div class="w-1/2 p-16 flex">
       <form
-        class="bg-white w-full h-full p-4 rounded-2xl flex flex-col bg-opacity-80"
+        class="bg-white w-full h-full p-8 rounded-2xl flex flex-col bg-opacity-80"
       >
         <RouterLink class="self-start" to="/">
           <img alt="Back" src="/src/assets/images/arrow.png" class="w-8 h-8" />
         </RouterLink>
 
-        <div class="text-center">
-          <h1>Welcome</h1>
-          <p>Lorem ipsum</p>
+        <div class="text-center space-y-2">
+          <h1 class="font-bold text-4xl">Welcome</h1>
+          <p class="">
+            Welcome to our Pokémon shelter, where trainers and their beloved
+            Pokémon companions find a safe haven and caring community.
+          </p>
         </div>
 
-        <div class="flex flex-col">
-          <label for="username">Username</label>
+        <div class="flex flex-col mt-4">
+          <label for="username" class="font-semibold">Username</label>
           <input type="text" v-model="form.username" /><br />
 
-          <label for="password">Password</label>
+          <label for="password" class="font-semibold">Password</label>
           <input type="password" v-model="form.password" /><br />
 
           <button
             @click="submit($event)"
-            class="bg-amber-400 font-bold rounded-full py-2 text-white"
+            class="bg-amber-400 font-bold rounded-full py-4 text-white"
           >
             LOG IN
           </button>
         </div>
+        <!-- <p class="w-full text-center mt-8">Not yet a member? Sign up.</p> -->
       </form>
     </div>
     <div class="right-section w-1/2"></div>

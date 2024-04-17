@@ -13,17 +13,15 @@ defineProps({
 
 <template>
   <div
-    class="flex w-full cursor-pointer hover:opacity-95 bg-white rounded-2xl max-h-60"
+    class="flex flex-col h-full cursor-pointer bg-white rounded-3xl space-y-4 p-6 text-center"
   >
-    <figure class="p-4 h-full">
-      <img
-        :alt="`${itemName}`"
-        :src="`/src/assets/images/snorlax.jpg`"
-        class="h-full rounded-xl"
-      />
-    </figure>
-    <div class="w-1/2 p-4 space-y-4">
-      <h1 class="text-3xl font-bold">{{ itemName }}</h1>
+    <img
+      :alt="`${itemName}`"
+      :src="`/src/assets/images/pokemon-conceirge-gp.jpg`"
+      class="h-2/3 rounded-3xl"
+    />
+    <div class="w-full space-y-2">
+      <h1 class="text-xl font-bold">{{ itemName }}</h1>
       <!-- <p class="">
         {{ itemDesc }}
       </p> -->

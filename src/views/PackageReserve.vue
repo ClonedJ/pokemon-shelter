@@ -54,14 +54,14 @@ const submit = (event) => {
 
 <template>
   <div class="bg-image bg-image-2"></div>
-  <div class="flex grow w-10/12 flex-col mt-8 mb-8 overflow-auto items-center">
+  <div class="flex grow w-10/12 flex-col mb-8 overflow-auto items-center">
     <div
       class="flex space-x-8 h-full z-10 rounded-2xl bg-white p-4 justify-between"
     >
       <img
         alt=""
         src="/src/assets/images/snorlax.jpg"
-        class="h-full rounded-xl"
+        class="h-full rounded-3xl"
       />
       <div>
         <h1>{{ packageData.name }}</h1>
@@ -84,7 +84,7 @@ const submit = (event) => {
 
     <form
       v-show="showModal"
-      class="w-full text-white -mt-12 pt-20 p-8 bg-yellow-900 rounded-2xl"
+      class="w-full text-white -mt-12 pt-20 p-8 bg-yellow-900 rounded-3xl"
     >
       <h2>Shelter Reservation</h2>
       <p>Fill the form to reserve a Deluxe Care package.</p>

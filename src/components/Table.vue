@@ -1,5 +1,6 @@
 <script setup>
 import SearchBar from "./SearchBar.vue";
+import Filter from "./Filter.vue";
 
 defineProps({
   fields: {
@@ -21,10 +22,11 @@ const getNestedProperty = (obj, path) => {
 </script>
 
 <template>
-  <SearchBar />
-  <table
-    class="w-10/12 space-y-4 flex flex-col *:bg-white *:rounded-2xl relative"
-  >
+  <div class="w-10/12 flex justify-between">
+    <Filter />
+    <SearchBar />
+  </div>
+  <table class="w-10/12 space-y-4 flex flex-col *:bg-white *:rounded-2xl">
     <thead class="sticky w-full py-4">
       <tr class="">
         <th v-for="(field, i) in fields" :key="i" class="font-bold capitalize">
