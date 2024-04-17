@@ -5,10 +5,11 @@ import {
   rejectReservation,
 } from "@/utils/reservation";
 import Table from "@/components/Table.vue";
+import { parseTable } from "@/utils/dataParser";
 
 const fields = [
   { label: "id", data: "id" },
-  { label: "user", data: "user" },
+  { label: "user", data: "user.creds.username" },
   { label: "package", data: "package" },
   { label: "check in", data: "reservation.checkInDate" },
   { label: "check out", data: "reservation.checkOutDate" },
@@ -19,16 +20,9 @@ const fields = [
 
 <template>
   <div class="bg-image bg-image-2"></div>
-  <!-- <div v-for="(reservation, i) in reservations" :key="i">
-    <template v-if="reservation.state === 'Pending'">
-      <h1>{{ reservation.id }}</h1>
-      <button @click="acceptReservation(reservation)">Accept</button>
-      <button @click="rejectReservation(reservation)">Reject</button>
-    </template>
-  </div> -->
   <Table
     :fields="fields"
-    :records="reservations"
+    :records="parseTable(reservations)"
     @handleFirstButton="acceptReservation"
     @handleSecondButton="rejectReservation"
   />

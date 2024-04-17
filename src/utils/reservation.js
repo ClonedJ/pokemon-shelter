@@ -1,17 +1,14 @@
 import { reactive } from "vue";
 import { getPackageData } from "./package";
+import { addPokemon } from "./pokemon";
 
 export const reservations = reactive([
   {
     id: "RSV00001",
-    user: "user1",
+    user: "USR00002",
     state: "Pending",
     package: "Basic Care",
-    pokemon: {
-      name: "Pikachu",
-      specie: "Pikachu",
-      age: 13,
-    },
+    pokemon: "PKM00001",
     reservation: {
       checkInDate: "2024-04-10",
       checkInTime: "12:00",
@@ -21,14 +18,10 @@ export const reservations = reactive([
   },
   {
     id: "RSV00002",
-    user: "user1",
+    user: "USR00003",
     state: "Pending",
     package: "Basic Care",
-    pokemon: {
-      name: "Pikachu",
-      specie: "Pikachu",
-      age: 13,
-    },
+    pokemon: "PKM00002",
     reservation: {
       checkInDate: "2024-04-10",
       checkInTime: "12:00",
@@ -38,7 +31,7 @@ export const reservations = reactive([
   },
 ]);
 
-const getNewId = () => {
+const generateNewId = () => {
   const maxId = parseInt(
     reservations[reservations.length - 1].id.replace("RSV", ""),
     10
@@ -48,9 +41,13 @@ const getNewId = () => {
 };
 
 export const fileReservation = (form) => {
-  form.id = getNewId();
+  const pokemonId = addPokemon(form.pokemon);
+
+  form.id = generateNewId();
   form.state = "Pending";
+  form.pokemon = pokemonId;
   reservations.push(form);
+  console.log(JSON.stringify(reservations, null, 2));
 };
 
 export const acceptReservation = (reservation) => {

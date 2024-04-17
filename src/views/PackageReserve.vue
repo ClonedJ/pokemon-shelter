@@ -14,7 +14,7 @@ const packageData = getPackageData(packageKey);
 
 const showModal = ref(false);
 const form = ref({
-  user: currentUser.creds.username,
+  user: currentUser.id,
   package: packageData.name,
   pokemon: {
     name: "",

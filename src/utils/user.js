@@ -1,7 +1,8 @@
 import { reactive } from "vue";
 
-const users = [
+export const users = [
   {
+    id: "USR00001",
     type: "employee",
     creds: {
       username: "emp1",
@@ -18,6 +19,7 @@ const users = [
     },
   },
   {
+    id: "USR00002",
     type: "trainer",
     creds: {
       username: "user1",
@@ -29,6 +31,23 @@ const users = [
       email: "ashketchum@gmail.com",
       phoneNum: "09123456788",
       street: "Numbus St.",
+      city: "Pallet Town",
+      region: "Kanto Region",
+    },
+  },
+  {
+    id: "USR00003",
+    type: "trainer",
+    creds: {
+      username: "user2",
+      password: "abcd1234",
+    },
+    profile: {
+      firstName: "John",
+      lastName: "Doe",
+      email: "johndoe@gmail.com",
+      phoneNum: "09123456787",
+      street: "Kalye St.",
       city: "Pallet Town",
       region: "Kanto Region",
     },
