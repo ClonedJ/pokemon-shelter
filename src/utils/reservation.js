@@ -19,6 +19,23 @@ export const reservations = reactive([
       checkOutTime: "12:00",
     },
   },
+  {
+    id: "RSV00002",
+    user: "user1",
+    state: "Pending",
+    package: "Basic Care",
+    pokemon: {
+      name: "Pikachu",
+      specie: "Pikachu",
+      age: 13,
+    },
+    reservation: {
+      checkInDate: "2024-04-10",
+      checkInTime: "12:00",
+      checkOutDate: "2024-04-20",
+      checkOutTime: "12:00",
+    },
+  },
 ]);
 
 const getNewId = () => {

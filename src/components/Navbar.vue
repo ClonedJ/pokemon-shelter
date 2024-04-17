@@ -3,7 +3,7 @@ import { RouterLink } from "vue-router";
 import { currentUser, logout } from "@/utils/user";
 
 const items = {
-  employee: ["home", "tasks", "trainers", "reservations", "logout"],
+  employee: ["home", "reservations", "tasks", "trainers", "logout"],
   trainer: ["home", "package", "gallery", "about", "logout"],
   guest: ["home", "package", "gallery", "about", "login"],
 };
@@ -13,7 +13,7 @@ const colors = ["lime-800", "yellow-900", "amber-400", "cyan-600", "cyan-600"];
 
 <template>
   <div class="z-50 w-full flex justify-center my-8">
-    <div class="bg-white w-10/12 rounded-full flex shadow-2xl justify-between">
+    <div class="bg-white w-10/12 rounded-full flex justify-between">
       <RouterLink
         v-for="(item, index) in items[currentUser ? currentUser.type : 'guest']"
         :key="index"
