@@ -4,7 +4,7 @@ import { currentUser, logout } from "@/utils/user";
 import { watch } from "vue";
 
 const items = {
-  employee: ["home", "tasks", "trainers", "reservations", "logout"],
+  employee: ["home", "reservations", "tasks", "trainers", "logout"],
   trainer: ["home", "package", "gallery", "about", "logout"],
   guest: ["home", "package", "gallery", "about", "login"],
 };
@@ -19,7 +19,7 @@ watch(router);
     v-if="router.name != 'login'"
     class="z-50 w-full flex justify-center my-8"
   >
-    <div class="bg-white w-10/12 rounded-full flex shadow-2xl justify-between">
+    <div class="bg-white w-10/12 rounded-full flex justify-between">
       <RouterLink
         v-for="(item, index) in items[currentUser ? currentUser.type : 'guest']"
         :key="index"
