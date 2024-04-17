@@ -56,7 +56,9 @@ export const acceptReservation = (reservation) => {
   reservation.tasks = packageData.tasks;
 
   // Default State
-  reservation.currentTask = 0;
+  reservation.currentTask = "Nothing";
+  reservation.nextTask = packageData.tasks[0].name;
+  reservation.nextTaskIndex = 0;
   reservation.currentPlace = packageData.tasks[0].place;
   reservation.currentState = "Resting";
 };
@@ -80,19 +82,26 @@ export const completeReservation = (reservation) => {
 export const doNextTask = (reservation) => {
   if (!reservation.isBusy) {
     const packageData = getPackageData(reservation.package);
-    const index = reservation.currentTask;
+    var index = reservation.nextTaskIndex;
     reservation.currentPlace = packageData.tasks[index].place;
     reservation.currentState = packageData.tasks[index].pokemonState;
-    reservation.currentTask++;
+    reservation.currentTask = packageData.tasks[index].action;
+    reservation.nextTask =
+      ++index < reservation.tasks.length
+        ? "Wait for task to finish"
+        : "No more tasks";
+    reservation.nextTaskIndex = index;
     reservation.isBusy = true;
     setTimeout(function () {
       // Default State
       reservation.currentPlace = packageData.tasks[0].place;
+      reservation.nextTask = packageData.tasks[index].name;
       reservation.currentState = "Resting";
+      reservation.currentTask = "Nothing";
       reservation.isBusy = false;
-    }, reservation.tasks[index].duration * 1000);
+    }, reservation.tasks[index - 1].duration * 1000);
   } else {
-    if (reservation.currentTask < reservation.tasks.length) {
+    if (reservation.nextTaskIndex < reservation.tasks.length) {
       alert("Currently doing a task");
     } else {
       alert("There are no more tasks");

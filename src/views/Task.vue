@@ -10,9 +10,10 @@ import Table from "@/components/Table.vue";
 const fields = [
   { label: "name", data: "pokemon.name" },
   { label: "place", data: "currentPlace" },
-  { label: "state", data: "currentState" },
-  { label: "task", data: "tasks[record.currentTask].name" },
-  { label: "do task" },
+  { label: "pokemon state", data: "currentState" },
+  { label: "current task", data: "tasks[record.currentTask - 1].name" },
+  { label: "next task", data: "tasks[record.currentTask].name" },
+  { label: "do next task" },
   { label: "return to owner" },
 ];
 const tasks = reservations.filter(
