@@ -7,7 +7,8 @@ import AboutView from "@/views/About.vue";
 import TaskView from "@/views/Task.vue";
 import TrainerView from "@/views/Trainer.vue";
 import ReservationView from "@/views/Reservation.vue";
-import AccountView from "@/views/Account.vue";
+import MyProfileView from "@/views/Account/MyProfile.vue";
+import MyReservationsView from "@/views/Account/MyReservations.vue";
 import LoginView from "@/views/Login.vue";
 
 const router = createRouter({
@@ -54,9 +55,14 @@ const router = createRouter({
       component: ReservationView,
     },
     {
-      path: "/account",
-      name: "account",
-      component: AccountView,
+      path: "/account/my-profile",
+      name: "account/my-profile",
+      component: MyProfileView,
+    },
+    {
+      path: "/account/my-reservations",
+      name: "account/my-reservations",
+      component: MyReservationsView,
     },
     {
       path: "/login",

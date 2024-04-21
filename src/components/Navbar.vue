@@ -60,12 +60,20 @@ watch(router);
         {{ currentUser.type == "employee" ? "Trainers" : "About" }}
       </RouterLink>
       <RouterLink
+        v-if="currentUser.type == 'trainer'"
+        :to="`/account/my-profile`"
+        active-class="bg-lime-800 text-white"
+        :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white`"
+      >
+        Account
+      </RouterLink>
+      <RouterLink
         @click="currentUser.type != 'guest' && logout()"
         :to="`/login`"
         active-class="bg-lime-800 text-white"
         :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white`"
       >
-        {{ currentUser.type == "employee" ? "Logout" : "Login" }}
+        {{ currentUser.type == "guest" ? "Login" : "Logout" }}
       </RouterLink>
     </div>
   </div>
