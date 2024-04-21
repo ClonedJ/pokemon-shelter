@@ -6,6 +6,7 @@ import {
 } from "@/utils/reservation";
 import Table from "@/components/Table.vue";
 import { parseTable } from "@/utils/dataParser";
+import Swal from "sweetalert2";
 
 const fields = [
   { label: "id", data: "id" },
@@ -13,9 +14,22 @@ const fields = [
   { label: "package", data: "package" },
   { label: "check in", data: "reservation.checkInDate" },
   { label: "check out", data: "reservation.checkOutDate" },
-  { label: "accept" },
-  { label: "reject" },
 ];
+
+const viewMore = (record) => {
+  Swal.fire({
+    title: record.id,
+    confirmButtonText: "Agree",
+    showDenyButton: true,
+    denyButtonText: "Reject",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      acceptReservation(record);
+    } else {
+      rejectReservation(record);
+    }
+  });
+};
 </script>
 
 <template>
@@ -23,7 +37,8 @@ const fields = [
   <Table
     :fields="fields"
     :records="parseTable(reservations)"
-    @handleFirstButton="acceptReservation"
-    @handleSecondButton="rejectReservation"
+    @viewMore="viewMore"
   />
+  <!-- @handleFirstButton="acceptReservation"
+    @handleSecondButton="rejectReservation" -->
 </template>

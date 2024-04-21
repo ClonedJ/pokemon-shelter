@@ -1,5 +1,6 @@
 <script setup>
 import { validateUserCred, login } from "@/utils/user.js";
+import Swal from "sweetalert2";
 import { ref } from "vue";
 import { useRouter, RouterLink } from "vue-router";
 
@@ -14,8 +15,15 @@ const submit = (event) => {
   const user = validateUserCred(form.value);
   if (user) {
     login(user);
-    alert("Login successful");
-    router.push("/");
+    Swal.fire({
+      icon: "success",
+      title: "Login successful",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    }).then(() => {
+      router.push("/");
+    });
   } else {
     alert("Something went wrong");
   }

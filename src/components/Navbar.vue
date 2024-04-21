@@ -17,7 +17,7 @@ watch(router);
 <template>
   <div
     v-if="router.name != 'login'"
-    class="z-50 w-full flex justify-center my-8"
+    class="z-50 w-full flex justify-center my-6"
   >
     <div class="bg-white w-10/12 rounded-full flex justify-between">
       <!-- <RouterLink
@@ -73,7 +73,7 @@ watch(router);
         active-class="bg-lime-800 text-white"
         :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white`"
       >
-        {{ currentUser.type == "guest" ? "Login" : "Logout" }}
+        {{ currentUser.type != "guest" ? "Logout" : "Login" }}
       </RouterLink>
     </div>
   </div>

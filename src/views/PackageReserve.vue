@@ -5,6 +5,7 @@ import { fileReservation } from "@/utils/reservation.js";
 import { currentUser } from "@/utils/user.js";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import Swal from "sweetalert2";
 
 const router = useRouter();
 
@@ -33,7 +34,23 @@ const openModal = () => {
   if (currentUser.type == "trainer") {
     showModal.value = true;
   } else {
-    alert("Please login to reserve a package");
+    Swal.fire({
+      icon: "warning",
+      title: "Login Required",
+      buttonsStyling: false,
+      showCancelButton: true,
+      cancelButtonText: "Keep browsing as Guest",
+      confirmButtonText: "Go to Login",
+      customClass: {
+        confirmButton: "text-white px-8 py-2 rounded-full bg-amber-500",
+        cancelButton: "text-white px-8 py-2 rounded-full bg-yellow-800 mr-4",
+      },
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        router.push("/login");
+      }
+    });
   }
 };
 
