@@ -4,7 +4,6 @@ import {
   doNextTask,
   completeReservation,
 } from "@/utils/reservation";
-import { parseTable } from "@/utils/dataParser";
 import Table from "@/components/Table.vue";
 import Swal from "sweetalert2";
 
@@ -38,5 +37,5 @@ const viewMore = (record) => {
 
 <template>
   <div class="bg-image bg-image-3"></div>
-  <Table :fields="fields" :records="parseTable(tasks)" @viewMore="viewMore" />
+  <Table :fields="fields" :records="tasks" @viewMore="viewMore" />
 </template>

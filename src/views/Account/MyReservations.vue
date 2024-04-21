@@ -3,12 +3,9 @@ import Sidebar from "@/components/Sidebar.vue";
 import { currentUser } from "@/utils/user";
 import { reservations } from "@/utils/reservation";
 import Table from "@/components/Table.vue";
-import { parseTable } from "@/utils/dataParser";
 
 const myReservations = reservations.filter(
-  (reservation) =>
-    reservation.user === currentUser.id ||
-    reservation.user.id === currentUser.id
+  (reservation) => reservation.user === currentUser.id
 );
 
 const fields = [
@@ -23,5 +20,5 @@ const fields = [
   <div class="bg-image bg-image-1"></div>
   <h1>My Reservations</h1>
   <Sidebar />
-  <Table :fields="fields" :records="parseTable(myReservations)" />
+  <Table :fields="fields" :records="myReservations" />
 </template>

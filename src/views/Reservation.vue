@@ -5,7 +5,6 @@ import {
   rejectReservation,
 } from "@/utils/reservation";
 import Table from "@/components/Table.vue";
-import { parseTable } from "@/utils/dataParser";
 import Swal from "sweetalert2";
 
 const fields = [
@@ -34,11 +33,7 @@ const viewMore = (record) => {
 
 <template>
   <div class="bg-image bg-image-2"></div>
-  <Table
-    :fields="fields"
-    :records="parseTable(reservations)"
-    @viewMore="viewMore"
-  />
+  <Table :fields="fields" :records="reservations" @viewMore="viewMore" />
   <!-- @handleFirstButton="acceptReservation"
     @handleSecondButton="rejectReservation" -->
 </template>

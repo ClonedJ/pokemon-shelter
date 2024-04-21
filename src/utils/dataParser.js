@@ -14,9 +14,9 @@ export const parseUrl = (url) => {
     .replace(/\b\w/g, (match) => match.toUpperCase());
 };
 
-const isTableId = (id) => {
+export const isForeignKey = (id, key) => {
   const regex = /^[a-zA-Z]{3}\d{5}$/;
-  return regex.test(id);
+  return regex.test(id) && key != "id";
 };
 
 const getForeignTable = (foreignId) => {
@@ -32,24 +32,11 @@ const getForeignTable = (foreignId) => {
   return foreignTable;
 };
 
-const getForeignTableRecord = (foreignId) => {
+export const getForeignTableRecord = (foreignId) => {
   const table = getForeignTable(foreignId);
   for (const record of table) {
     if (record.id == foreignId) {
       return record;
     }
   }
-};
-
-export const parseTable = (table) => {
-  table.forEach((record) => {
-    Object.keys(record).forEach((property) => {
-      if (property != "id" && isTableId(record[property])) {
-        const foreignKey = record[property];
-        const foreignRecord = getForeignTableRecord(foreignKey);
-        record[property] = foreignRecord;
-      }
-    });
-  });
-  return table;
 };
