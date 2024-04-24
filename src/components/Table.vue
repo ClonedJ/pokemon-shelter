@@ -19,24 +19,19 @@ const props = defineProps({
 });
 
 const filterCurrent = ref(props.filter.current);
+const records = ref({});
 const changeFilter = (option) => {
   console.log(option);
   filterCurrent.value = option;
 };
-
-const filteredRecords = ref(
-  props.records.filter(
-    (record) => record.state.toLowerCase() === filterCurrent.value.toLowerCase()
-  )
-);
-
-watch(filterCurrent, () => {
-  filteredRecords.value = props.records.filter(
+const filterRecords = () => {
+  records.value = props.records.filter(
     (record) => record.state.toLowerCase() === filterCurrent.value.toLowerCase()
   );
-});
-
-const update = ref(true);
+};
+filterRecords();
+watch(filterCurrent, filterRecords);
+watch(props.records, filterRecords);
 
 const emit = defineEmits(["viewMore"]);
 
@@ -65,7 +60,7 @@ const getNestedProperty = (obj, path) => {
       </tr>
     </thead>
     <tbody class="even:bg-gray-100 *:py-4 *:border-b-2">
-      <tr v-for="(record, i) in filteredRecords" :key="i">
+      <tr v-for="(record, i) in records" :key="i">
         <td v-for="(field, j) in fields" :key="j">
           <template v-if="field.label === 'current task'">
             <!-- Access tasks array directly -->
