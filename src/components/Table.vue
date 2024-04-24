@@ -3,17 +3,41 @@ import SearchBar from "./SearchBar.vue";
 import Filter from "./Filter.vue";
 import Swal from "sweetalert2";
 import { isForeignKey, getForeignTableRecord } from "@/utils/dataParser";
+import { ref, watch } from "vue";
 
-defineProps({
+const props = defineProps({
   fields: {
     type: Array,
     required: true,
   },
   records: {
-    type: Array,
-    requied: true,
+    type: Object,
+    required: true,
+  },
+  filter: {
+    type: Object,
   },
 });
+
+const filterCurrent = ref(props.filter.current);
+const changeFilter = (option) => {
+  console.log(option);
+  filterCurrent.value = option;
+};
+
+const filteredRecords = ref(
+  props.records.filter(
+    (record) => record.state.toLowerCase() === filterCurrent.value.toLowerCase()
+  )
+);
+
+watch(filterCurrent, () => {
+  filteredRecords.value = props.records.filter(
+    (record) => record.state.toLowerCase() === filterCurrent.value.toLowerCase()
+  );
+});
+
+const update = ref(true);
 
 const emit = defineEmits(["viewMore"]);
 
@@ -33,7 +57,11 @@ const getNestedProperty = (obj, path) => {
 
 <template>
   <div class="w-10/12 flex justify-between">
-    <Filter />
+    <Filter
+      :current="filterCurrent"
+      :options="filter.options"
+      @changeFilter="changeFilter"
+    />
     <SearchBar />
   </div>
   <table class="w-10/12 space-y-4 flex flex-col *:bg-white *:rounded-2xl">
@@ -46,7 +74,7 @@ const getNestedProperty = (obj, path) => {
       </tr>
     </thead>
     <tbody class="even:bg-gray-100 *:py-4 *:border-b-2">
-      <tr v-for="(record, i) in records" :key="i">
+      <tr v-for="(record, i) in filteredRecords" :key="i">
         <td v-for="(field, j) in fields" :key="j">
           <template v-if="field.label === 'current task'">
             <!-- Access tasks array directly -->

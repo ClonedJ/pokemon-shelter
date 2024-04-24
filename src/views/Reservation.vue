@@ -15,6 +15,11 @@ const fields = [
   { label: "check out", data: "reservation.checkOutDate" },
 ];
 
+const filter = {
+  options: ["Pending", "Reserved", "Completed", "Rejected"],
+  current: "Pending",
+};
+
 const viewMore = (record) => {
   Swal.fire({
     title: record.id,
@@ -33,7 +38,12 @@ const viewMore = (record) => {
 
 <template>
   <div class="bg-image bg-image-2"></div>
-  <Table :fields="fields" :records="reservations" @viewMore="viewMore" />
+  <Table
+    :fields="fields"
+    :records="reservations"
+    :filter="filter"
+    @viewMore="viewMore"
+  />
   <!-- @handleFirstButton="acceptReservation"
     @handleSecondButton="rejectReservation" -->
 </template>

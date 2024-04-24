@@ -1,6 +1,16 @@
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 
+defineProps({
+  options: {
+    type: Array,
+  },
+  current: {
+    type: String,
+  },
+});
+
+const emit = defineEmits(["changeFilter"]);
 const showOptions = ref(false);
 </script>
 
@@ -15,7 +25,7 @@ const showOptions = ref(false);
         aria-haspopup="true"
         @click="showOptions = !showOptions"
       >
-        Options
+        {{ current }}
         <svg
           class="-mr-1 h-5 w-5 text-gray-400"
           viewBox="0 0 20 20"
@@ -48,41 +58,21 @@ const showOptions = ref(false);
         tabindex="-1"
       >
         <div class="py-1" role="none">
-          <a
-            href="#"
+          <button
+            v-for="(option, i) in options"
+            @click="
+              {
+                $emit('changeFilter', option);
+                showOptions = !showOptions;
+              }
+            "
             class="text-gray-700 block px-4 py-2 text-sm"
             role="menuitem"
             tabindex="-1"
-            id="menu-item-0"
-            >Account settings</a
+            :id="'menu-item-' + i"
           >
-          <a
-            href="#"
-            class="text-gray-700 block px-4 py-2 text-sm"
-            role="menuitem"
-            tabindex="-1"
-            id="menu-item-1"
-            >Support</a
-          >
-          <a
-            href="#"
-            class="text-gray-700 block px-4 py-2 text-sm"
-            role="menuitem"
-            tabindex="-1"
-            id="menu-item-2"
-            >License</a
-          >
-          <form method="POST" action="#" role="none">
-            <button
-              type="submit"
-              class="text-gray-700 block w-full px-4 py-2 text-left text-sm"
-              role="menuitem"
-              tabindex="-1"
-              id="menu-item-3"
-            >
-              Sign out
-            </button>
-          </form>
+            {{ option }}
+          </button>
         </div>
       </div>
     </transition>
