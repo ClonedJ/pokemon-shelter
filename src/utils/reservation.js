@@ -5,10 +5,31 @@ import { addPokemon } from "./pokemon";
 export const reservations = reactive([
   {
     id: "RSV00001",
-    user: "USR00001",
+    user: {
+      id: "USR00001",
+      type: "trainer",
+      creds: {
+        username: "user1",
+        password: "abcd1234",
+      },
+      profile: {
+        firstName: "Ash",
+        lastName: "Ketchum",
+        email: "ashketchum@gmail.com",
+        phoneNum: "09123456788",
+        street: "Numbus St.",
+        city: "Pallet Town",
+        region: "Kanto Region",
+      },
+    },
     state: "Pending",
     package: "Basic Care",
-    pokemon: "PKM00001",
+    pokemon: {
+      id: "PKM00001",
+      name: "Pikachuchu",
+      specie: "Pikachu",
+      age: 13,
+    },
     reservation: {
       checkInDate: "2024-04-10",
       checkInTime: "12:00",
@@ -18,10 +39,31 @@ export const reservations = reactive([
   },
   {
     id: "RSV00002",
-    user: "USR00002",
+    user: {
+      id: "USR00002",
+      type: "trainer",
+      creds: {
+        username: "user2",
+        password: "abcd1234",
+      },
+      profile: {
+        firstName: "John",
+        lastName: "Doe",
+        email: "johndoe@gmail.com",
+        phoneNum: "09123456787",
+        street: "Kalye St.",
+        city: "Pallet Town",
+        region: "Kanto Region",
+      },
+    },
     state: "Pending",
     package: "Basic Care",
-    pokemon: "PKM00002",
+    pokemon: {
+      id: "PKM00002",
+      name: "Pikaaa",
+      specie: "Pikachu",
+      age: 15,
+    },
     reservation: {
       checkInDate: "2024-04-10",
       checkInTime: "12:00",
@@ -45,7 +87,7 @@ export const fileReservation = (form) => {
 
   form.id = generateNewId();
   form.state = "Pending";
-  form.pokemon = pokemonId;
+  form.pokemon.id = pokemonId;
   reservations.push(form);
   console.log(JSON.stringify(reservations, null, 2));
 };

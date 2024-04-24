@@ -2,7 +2,6 @@
 import SearchBar from "./SearchBar.vue";
 import Filter from "./Filter.vue";
 import Swal from "sweetalert2";
-import { isForeignKey, getForeignTableRecord } from "@/utils/dataParser";
 import { ref, watch } from "vue";
 
 const props = defineProps({
@@ -43,14 +42,6 @@ const emit = defineEmits(["viewMore"]);
 
 const getNestedProperty = (obj, path) => {
   var properties = path.split(".");
-
-  const key = properties[0];
-  if (isForeignKey(obj[key], key)) {
-    const foreignKey = obj[key];
-    obj = getForeignTableRecord(foreignKey);
-    properties = properties.slice(1);
-  }
-
   return properties.reduce((acc, prop) => acc && acc[prop], obj);
 };
 </script>
