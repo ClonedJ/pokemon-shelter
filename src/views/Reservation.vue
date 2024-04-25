@@ -3,6 +3,7 @@ import {
   reservations,
   acceptReservation,
   rejectReservation,
+  completeReservation,
 } from "@/utils/reservation";
 import Table from "@/components/Table.vue";
 import Swal from "sweetalert2";
@@ -21,17 +22,18 @@ const filter = {
 };
 
 const viewMore = (record) => {
-  Swal.fire({
-    title: record.id,
-    confirmButtonText: "Agree",
-    showDenyButton: true,
-    denyButtonText: "Reject",
-    buttonsStyling: false,
-    customClass: {
-      confirmButton: "text-white px-8 py-2 rounded-full bg-lime-800 mr-4",
-      denyButton: "text-white px-8 py-2 rounded-full bg-red-700",
-    },
-    html: `
+  if (record.state == "Pending") {
+    Swal.fire({
+      title: record.id,
+      confirmButtonText: "Agree",
+      showDenyButton: true,
+      denyButtonText: "Reject",
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: "text-white px-8 py-2 rounded-full bg-lime-800 mr-4",
+        denyButton: "text-white px-8 py-2 rounded-full bg-red-700",
+      },
+      html: `
       <div class='text-start'>
         <p>Package: ${record.package}</p>
         <p>Trainer: ${record.user.creds.username}</p>
@@ -41,13 +43,55 @@ const viewMore = (record) => {
         <p>Check Out: ${record.reservation.checkOutDate}</p>
       </div>
     `,
-  }).then((result) => {
-    if (result.isConfirmed) {
-      acceptReservation(record);
-    } else if (result.isDenied) {
-      rejectReservation(record);
-    }
-  });
+    }).then((result) => {
+      if (result.isConfirmed) {
+        acceptReservation(record);
+      } else if (result.isDenied) {
+        rejectReservation(record);
+      }
+    });
+  } else if (record.state == "Reserved") {
+    Swal.fire({
+      title: record.id,
+      confirmButtonText: "Give back to owner",
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: "text-white px-8 py-2 rounded-full bg-lime-800 mr-4",
+      },
+      html: `
+      <div class='text-start'>
+        <p>Package: ${record.package}</p>
+        <p>Trainer: ${record.user.creds.username}</p>
+        <p>Pokemon: ${record.pokemon.name}</p>
+        <p>Activities</p>
+        <p>Check In: ${record.reservation.checkInDate}</p>
+        <p>Check Out: ${record.reservation.checkOutDate}</p>
+      </div>
+    `,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        completeReservation(record);
+      }
+    });
+  } else {
+    Swal.fire({
+      title: record.id,
+      customClass: {
+        confirmButton: "text-white px-8 py-2 rounded-full bg-lime-800 mr-4",
+        denyButton: "text-white px-8 py-2 rounded-full bg-red-700",
+      },
+      html: `
+      <div class='text-start'>
+        <p>Package: ${record.package}</p>
+        <p>Trainer: ${record.user.creds.username}</p>
+        <p>Pokemon: ${record.pokemon.name}</p>
+        <p>Activities</p>
+        <p>Check In: ${record.reservation.checkInDate}</p>
+        <p>Check Out: ${record.reservation.checkOutDate}</p>
+      </div>
+    `,
+    });
+  }
 };
 </script>
 

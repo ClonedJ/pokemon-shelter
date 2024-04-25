@@ -178,15 +178,7 @@ export const rejectReservation = (reservation) => {
 };
 
 export const completeReservation = (reservation) => {
-  if (
-    reservation.isBusy &&
-    reservation.currentTask != reservation.tasks.length
-  ) {
-    alert("Currently doing a task");
-  } else {
-    alert("You have fully completed a reservation");
-    reservation.state = "Completed";
-  }
+  reservation.state = "Completed";
 };
 
 export const doNextTask = (reservation) => {
