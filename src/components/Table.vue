@@ -62,18 +62,7 @@ const getNestedProperty = (obj, path) => {
     <tbody class="even:bg-gray-100 *:py-4 *:border-b-2">
       <tr v-for="(record, i) in records" :key="i">
         <td v-for="(field, j) in fields" :key="j">
-          <template v-if="field.label === 'current task'">
-            <!-- Access tasks array directly -->
-            {{ record.currentTask }}
-          </template>
-          <template v-else-if="field.label === 'next task'">
-            <!-- Access tasks array directly -->
-            {{ record.nextTask }}
-          </template>
-          <template v-else>
-            <!-- For other fields, use getNestedProperty -->
-            {{ getNestedProperty(record, field.data) }}
-          </template>
+          {{ getNestedProperty(record, field.data) }}
         </td>
         <td>
           <button type="button" @click="$emit('viewMore', record)">

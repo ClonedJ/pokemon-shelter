@@ -18,7 +18,6 @@ const fields = [
 </script>
 <template>
   <div class="bg-image bg-image-1"></div>
-  <h1>My Reservations</h1>
   <Sidebar />
-  <Table :fields="fields" :records="myReservations" />
+  <!-- <Table :fields="fields" :records="myReservations" /> -->
 </template>

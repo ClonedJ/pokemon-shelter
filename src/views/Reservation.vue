@@ -26,10 +26,25 @@ const viewMore = (record) => {
     confirmButtonText: "Agree",
     showDenyButton: true,
     denyButtonText: "Reject",
+    buttonsStyling: false,
+    customClass: {
+      confirmButton: "text-white px-8 py-2 rounded-full bg-lime-800 mr-4",
+      denyButton: "text-white px-8 py-2 rounded-full bg-red-700",
+    },
+    html: `
+      <div class='text-start'>
+        <p>Package: ${record.package}</p>
+        <p>Trainer: ${record.user.creds.username}</p>
+        <p>Pokemon: ${record.pokemon.name}</p>
+        <p>Activities</p>
+        <p>Check In: ${record.reservation.checkInDate}</p>
+        <p>Check Out: ${record.reservation.checkOutDate}</p>
+      </div>
+    `,
   }).then((result) => {
     if (result.isConfirmed) {
       acceptReservation(record);
-    } else {
+    } else if (result.isDenied) {
       rejectReservation(record);
     }
   });

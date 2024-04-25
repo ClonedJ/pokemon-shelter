@@ -11,9 +11,9 @@ const fields = [
   { label: "", data: "" },
   { label: "name", data: "pokemon.name" },
   { label: "place", data: "currentPlace" },
-  { label: "pokemon state", data: "currentState" },
-  { label: "current task", data: "tasks[record.currentTask - 1].name" },
-  { label: "next task", data: "tasks[record.currentTask].name" },
+  { label: "state", data: "currentState" },
+  { label: "current task", data: "currentTask" },
+  { label: "next task", data: "nextTask" },
 ];
 const tasks = reservations.filter(
   (reservation) => reservation.state === "Reserved"
@@ -22,9 +22,24 @@ const tasks = reservations.filter(
 const viewMore = (record) => {
   Swal.fire({
     title: record.id,
-    confirmButtonText: "Do task",
+    confirmButtonText: "Do Task",
     showDenyButton: true,
     denyButtonText: "Return to Owner",
+    buttonsStyling: false,
+    customClass: {
+      confirmButton: "text-white px-8 py-2 rounded-full bg-amber-500 mr-4",
+      denyButton: "text-white px-8 py-2 rounded-full bg-yellow-800",
+    },
+    html: `
+      <div class='text-start'>
+        <p>Package: ${record.package}</p>
+        <p>Trainer: ${record.user.creds.username}</p>
+        <p>Pokemon: ${record.pokemon.name}</p>
+        <p>Pokemon State: ${record.currentState}</p>
+        <p>Current Task: ${record.currentTask}</p>
+        <p>Current Task: ${record.nextTask}</p>
+      </div>
+    `,
   }).then((result) => {
     if (result.isConfirmed) {
       doNextTask(record);

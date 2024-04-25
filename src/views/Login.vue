@@ -25,7 +25,14 @@ const submit = (event) => {
       router.push("/");
     });
   } else {
-    alert("Something went wrong");
+    Swal.fire({
+      icon: "error",
+      title: "Login Unsuccessful",
+      buttonsStyling: false,
+      customClass: {
+        confirmButton: "text-white px-8 py-2 rounded-full bg-yellow-800",
+      },
+    });
   }
   event.preventDefault();
 };

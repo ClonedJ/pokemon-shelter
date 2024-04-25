@@ -4,12 +4,11 @@ import { currentUser, logout } from "@/utils/user";
 import { watch } from "vue";
 
 const items = {
-  employee: ["home", "reservations", "tasks", "trainers", "logout"],
+  employee: ["home", "reservations", "trainers", "logout"],
   trainer: ["home", "package", "gallery", "about", "logout"],
   guest: ["home", "package", "gallery", "about", "login"],
 };
 
-const colors = ["lime-800", "yellow-900", "amber-400", "cyan-600", "cyan-600"];
 const router = useRoute();
 watch(router);
 </script>
@@ -46,11 +45,12 @@ watch(router);
         {{ currentUser.type == "employee" ? "Reservations" : "Packages" }}
       </RouterLink>
       <RouterLink
-        :to="currentUser.type == 'employee' ? '/tasks' : '/gallery'"
+        :to="'/gallery'"
         active-class="bg-amber-400 text-white"
         :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-amber-400 hover:text-white`"
+        v-if="currentUser.type != 'employee'"
       >
-        {{ currentUser.type == "employee" ? "Tasks" : "Gallery" }}
+        Gallery
       </RouterLink>
       <RouterLink
         :to="currentUser.type == 'employee' ? '/trainers' : '/about'"
@@ -63,15 +63,29 @@ watch(router);
         v-if="currentUser.type == 'trainer'"
         :to="`/account/my-profile`"
         active-class="bg-lime-800 text-white"
-        :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white`"
+        :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white flex justify-center`"
       >
-        Account
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+          />
+        </svg>
       </RouterLink>
       <RouterLink
         @click="currentUser.type != 'guest' && logout()"
         :to="`/login`"
         active-class="bg-lime-800 text-white"
         :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white`"
+        v-if="currentUser.type != 'trainer'"
       >
         {{ currentUser.type != "guest" ? "Logout" : "Login" }}
       </RouterLink>

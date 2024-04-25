@@ -8,8 +8,13 @@ const fields = [
   { label: "No. of Pokemon", data: "" },
   { label: "Active", data: "" },
 ];
+
+const filter = {
+  options: ["Pending", "Reserved", "Completed", "Rejected"],
+  current: "Pending",
+};
 </script>
 <template>
   <div class="bg-image bg-image-4"></div>
-  <Table :fields="fields" />
+  <Table :filter="filter" :fields="fields" />
 </template>
