@@ -5,7 +5,7 @@ import { reservations } from "@/utils/reservation";
 import Table from "@/components/Table.vue";
 
 const myReservations = reservations.filter(
-  (reservation) => reservation.user === currentUser.id
+  (reservation) => reservation.user.id === currentUser.id
 );
 
 const fields = [
@@ -18,6 +18,16 @@ const fields = [
 </script>
 <template>
   <div class="bg-image bg-image-1"></div>
-  <Sidebar />
+  <div class="bg-white flex rounded-3xl">
+    <Sidebar />
+    <div v-for="record in myReservations" class="flex flex-row">
+      <div>{{ record.id }}</div>
+      <div>{{ record.pokemon.name }}</div>
+      <div>{{ record.package }}</div>
+      <div>{{ record.reservation.checkInDate }}</div>
+      <div>{{ record.reservation.checkOutDate }}</div>
+    </div>
+  </div>
+
   <!-- <Table :fields="fields" :records="myReservations" /> -->
 </template>

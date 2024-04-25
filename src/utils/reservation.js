@@ -71,6 +71,74 @@ export const reservations = reactive([
       checkOutTime: "12:00",
     },
   },
+  {
+    id: "RSV00003",
+    user: {
+      id: "USR00001",
+      type: "trainer",
+      creds: {
+        username: "user1",
+        password: "abcd1234",
+      },
+      profile: {
+        firstName: "Ash",
+        lastName: "Ketchum",
+        email: "ashketchum@gmail.com",
+        phoneNum: "09123456788",
+        street: "Numbus St.",
+        city: "Pallet Town",
+        region: "Kanto Region",
+      },
+    },
+    state: "Pending",
+    package: "Basic Care",
+    pokemon: {
+      id: "PKM00003",
+      name: "Snorlachuchu",
+      specie: "Snorlax",
+      age: 13,
+    },
+    reservation: {
+      checkInDate: "2024-04-10",
+      checkInTime: "12:00",
+      checkOutDate: "2024-04-20",
+      checkOutTime: "12:00",
+    },
+  },
+  {
+    id: "RSV00004",
+    user: {
+      id: "USR00001",
+      type: "trainer",
+      creds: {
+        username: "user1",
+        password: "abcd1234",
+      },
+      profile: {
+        firstName: "Ash",
+        lastName: "Ketchum",
+        email: "ashketchum@gmail.com",
+        phoneNum: "09123456788",
+        street: "Numbus St.",
+        city: "Pallet Town",
+        region: "Kanto Region",
+      },
+    },
+    state: "Pending",
+    package: "Basic Care",
+    pokemon: {
+      id: "PKM00004",
+      name: "Muuuuck",
+      specie: "Muk",
+      age: 13,
+    },
+    reservation: {
+      checkInDate: "2024-04-10",
+      checkInTime: "12:00",
+      checkOutDate: "2024-04-20",
+      checkOutTime: "12:00",
+    },
+  },
 ]);
 
 const generateNewId = () => {
