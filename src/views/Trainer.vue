@@ -1,20 +1,22 @@
 <script setup>
 import Table from "@/components/Table.vue";
+import { users } from "@/utils/user";
 
 const fields = [
-  { label: "", data: "" },
-  { label: "first name", data: "" },
-  { label: "last name", data: "" },
-  { label: "No. of Pokemon", data: "" },
-  { label: "Active", data: "" },
+  { label: "id", data: "id" },
+  { label: "first name", data: "profile.firstName" },
+  { label: "last name", data: "profile.lastName" },
+  { label: "No. of Pokemons", data: "noOfPokemon" },
 ];
 
 const filter = {
-  options: ["Pending", "Reserved", "Completed", "Rejected"],
-  current: "Pending",
+  options: ["Active", "Inactive"],
+  current: "Active",
 };
+
+const trainers = users.filter((user) => user.type == "trainer");
 </script>
 <template>
   <div class="bg-image bg-image-4"></div>
-  <Table :filter="filter" :fields="fields" />
+  <Table :filter="filter" :records="trainers" :fields="fields" />
 </template>

@@ -34,6 +34,8 @@ export const users = [
       city: "Pallet Town",
       region: "Kanto Region",
     },
+    state: "Active",
+    noOfPokemon: 3,
   },
   {
     id: "USR00002",
@@ -51,6 +53,8 @@ export const users = [
       city: "Pallet Town",
       region: "Kanto Region",
     },
+    state: "Active",
+    noOfPokemon: 1,
   },
   {
     id: "USR00003",
@@ -68,6 +72,8 @@ export const users = [
       city: "Pallet Town",
       region: "Kanto Region",
     },
+    state: "Inactive",
+    noOfPokemon: 0,
   },
   {
     id: "USR00004",
@@ -85,6 +91,8 @@ export const users = [
       city: "Pallet Town",
       region: "Kanto Region",
     },
+    state: "Inactive",
+    noOfPokemon: 0,
   },
   {
     id: "USR00005",
@@ -102,6 +110,8 @@ export const users = [
       city: "Pallet Town",
       region: "Kanto Region",
     },
+    state: "Inactive",
+    noOfPokemon: 0,
   },
 ];
 
