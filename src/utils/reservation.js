@@ -216,3 +216,7 @@ export const getUserActiveReservationsCount = (userId) => {
     (record) => record.user.id == userId && record.state == "Reserved"
   ).length;
 };
+
+export const getStateReservationsCount = (state) => {
+  return reservations.filter((record) => record.state == state).length;
+};

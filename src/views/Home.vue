@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { currentUser } from "@/utils/user.js";
+import { getStateReservationsCount } from "@/utils/reservation";
 </script>
 <template>
   <div class="bg-image bg-image-1"></div>
@@ -45,23 +46,25 @@ import { currentUser } from "@/utils/user.js";
     >
       <div class="bg-yellow-800 w-1/6 p-2">
         <p>Total no. of pending reservations</p>
-        <p>23</p>
+        <p>{{ getStateReservationsCount("Pending") }}</p>
       </div>
       <div class="bg-red-700 w-1/6 p-2">
-        <p>Total no. of tasks today</p>
-        <p>23</p>
+        <p>Total no. of reserved reservations</p>
+        <p>{{ getStateReservationsCount("Reserved") }}</p>
       </div>
       <div class="w-2/4 flex flex-col space-y-3 *:rounded-3xl">
-        <h1 class="bg-amber-500 text-lg py-1 font-semibold">To-Do Task</h1>
+        <h1 class="bg-amber-500 text-lg py-1 font-semibold">
+          Employee of the Month
+        </h1>
         <div class="bg-amber-500 p-2 flex grow space-x-4">
           <img
             alt="Welcome"
-            src="/src/assets/images/snorlax.jpg"
+            src="/src/assets/images/haru_pfp.jpg"
             class="rounded-3xl w-1/6"
           />
           <div>
-            <p>R#123</p>
-            <p>Snorlax</p>
+            <p>EMP000001</p>
+            <p>Haru</p>
           </div>
         </div>
       </div>
