@@ -16,6 +16,9 @@ const props = defineProps({
   filter: {
     type: Object,
   },
+  hasViewMore: {
+    type: Boolean,
+  },
 });
 
 const filterCurrent = ref(props.filter.current);
@@ -56,7 +59,7 @@ const getNestedProperty = (obj, path) => {
         <th v-for="(field, i) in fields" :key="i" class="font-bold capitalize">
           {{ field.label }}
         </th>
-        <th></th>
+        <th v-if="props.hasViewMore"></th>
       </tr>
     </thead>
     <tbody class="even:bg-gray-100 *:py-4 *:border-b-2">
@@ -64,7 +67,7 @@ const getNestedProperty = (obj, path) => {
         <td v-for="(field, j) in fields" :key="j">
           {{ getNestedProperty(record, field.data) }}
         </td>
-        <td>
+        <td v-if="props.hasViewMore">
           <button type="button" @click="$emit('viewMore', record)">
             <svg
               xmlns="http://www.w3.org/2000/svg"

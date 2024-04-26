@@ -101,6 +101,7 @@ const viewMore = (record) => {
     :fields="fields"
     :records="reservations"
     :filter="filter"
+    :hasViewMore="true"
     @viewMore="viewMore"
   />
   <!-- @handleFirstButton="acceptReservation"
