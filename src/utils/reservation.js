@@ -210,3 +210,9 @@ export const doNextTask = (reservation) => {
     }
   }
 };
+
+export const getUserActiveReservationsCount = (userId) => {
+  return reservations.filter(
+    (record) => record.user.id == userId && record.state == "Reserved"
+  ).length;
+};

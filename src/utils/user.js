@@ -1,4 +1,5 @@
 import { reactive } from "vue";
+import { getUserActiveReservationsCount } from "./reservation";
 
 export const users = [
   {
@@ -34,7 +35,7 @@ export const users = [
       city: "Pallet Town",
       region: "Kanto Region",
     },
-    state: "Active",
+    state: "Inactive",
     noOfPokemon: 3,
   },
   {
@@ -53,7 +54,7 @@ export const users = [
       city: "Pallet Town",
       region: "Kanto Region",
     },
-    state: "Active",
+    state: "Inactive",
     noOfPokemon: 1,
   },
   {
@@ -119,6 +120,15 @@ export const currentUser = reactive({
   type: "guest",
 });
 
+const getUser = (userId) => {
+  for (const user of users) {
+    if (user.id == userId) {
+      return user;
+    }
+  }
+  return null;
+};
+
 export const validateUserCred = (creds) => {
   for (const user of users) {
     if (
@@ -137,4 +147,10 @@ export const login = (newUser) => {
 
 export const logout = () => {
   Object.assign(currentUser, { type: "guest" });
+};
+
+export const updateUserState = (userId) => {
+  const count = getUserActiveReservationsCount(userId);
+  const user = getUser(userId);
+  user.state = count > 0 ? "Active" : "Inactive";
 };

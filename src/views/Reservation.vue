@@ -7,6 +7,7 @@ import {
 } from "@/utils/reservation";
 import Table from "@/components/Table.vue";
 import Swal from "sweetalert2";
+import { updateUserState } from "@/utils/user";
 
 const fields = [
   { label: "id", data: "id" },
@@ -46,6 +47,7 @@ const viewMore = (record) => {
     }).then((result) => {
       if (result.isConfirmed) {
         acceptReservation(record);
+        updateUserState(record.user.id);
       } else if (result.isDenied) {
         rejectReservation(record);
       }
@@ -71,6 +73,7 @@ const viewMore = (record) => {
     }).then((result) => {
       if (result.isConfirmed) {
         completeReservation(record);
+        updateUserState(record.user.id);
       }
     });
   } else {
