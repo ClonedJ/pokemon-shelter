@@ -36,7 +36,7 @@ export const users = [
       region: "Kanto Region",
     },
     state: "Inactive",
-    noOfPokemon: 3,
+    noOfPokemon: 0,
   },
   {
     id: "USR00002",
@@ -55,7 +55,7 @@ export const users = [
       region: "Kanto Region",
     },
     state: "Inactive",
-    noOfPokemon: 1,
+    noOfPokemon: 0,
   },
   {
     id: "USR00003",
@@ -149,8 +149,9 @@ export const logout = () => {
   Object.assign(currentUser, { type: "guest" });
 };
 
-export const updateUserState = (userId) => {
+export const updateUserData = (userId) => {
   const count = getUserActiveReservationsCount(userId);
   const user = getUser(userId);
+  user.noOfPokemon = count;
   user.state = count > 0 ? "Active" : "Inactive";
 };
