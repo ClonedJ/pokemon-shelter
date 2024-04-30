@@ -31,3 +31,16 @@ export const addPokemon = (pokemonData) => {
 
   return pokemonId;
 };
+
+export const pokeSpecies = [
+  "Bulbasaur",
+  "Charmander",
+  "Squirtle",
+  "Chikorita",
+  "Cyndaquil",
+  "Totodile",
+  "Treecko",
+  "Torchic",
+  "Mudkip",
+  "Snorlax",
+];

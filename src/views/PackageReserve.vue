@@ -3,7 +3,13 @@ import { parseUrl } from "@/utils/dataParser.js";
 import { getPackageData } from "@/utils/package.js";
 import { fileReservation } from "@/utils/reservation.js";
 import { currentUser } from "@/utils/user.js";
-import { ref } from "vue";
+import { pokeSpecies } from "@/utils/pokemon";
+import {
+  convertDateToTime,
+  addOneDay,
+  convertDateToIDate,
+} from "@/utils/datetime";
+import { ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import Swal from "sweetalert2";
 
@@ -13,21 +19,47 @@ const packageUrl = router.currentRoute._value.params.id;
 const packageKey = parseUrl(packageUrl);
 const packageData = getPackageData(packageKey);
 
+const minDate = ref({
+  checkIn: new Date(),
+  checkOut: addOneDay(new Date()),
+});
+
 const showModal = ref(false);
 const form = ref({
   user: currentUser,
   package: packageData.name,
   pokemon: {
     name: "",
-    specie: "",
-    age: 0,
+    specie: "Bulbasaur",
+    age: 10,
   },
   reservation: {
-    checkInDate: "",
-    checkInTime: "",
-    checkOutDate: "",
-    checkOutTime: "",
+    checkInDate: convertDateToIDate(minDate.value.checkIn),
+    checkInTime: convertDateToTime(minDate.value.checkIn),
+    checkOutDate: convertDateToIDate(minDate.value.checkOut),
+    checkOutTime: convertDateToTime(minDate.value.checkOut),
   },
+});
+
+watch(form.value.reservation, () => {
+  const reservation = form.value.reservation;
+  const checkInDate = new Date(reservation.checkInDate);
+  const checkInDatePlusOneDay = addOneDay(checkInDate);
+  minDate.value.checkOut = checkInDatePlusOneDay;
+  if (reservation.checkInDate >= reservation.checkOutDate) {
+    form.value.reservation.checkOutDate = convertDateToIDate(
+      checkInDatePlusOneDay
+    );
+  }
+});
+
+watch(form.value.pokemon, () => {
+  const age = form.value.pokemon.age;
+  if (age < 8) {
+    form.value.pokemon.age = 8;
+  } else if (age > 100) {
+    form.value.pokemon.age = 100;
+  }
 });
 
 const openModal = () => {
@@ -63,8 +95,46 @@ const closeModal = () => {
 
 const submit = (event) => {
   if (currentUser.type == "trainer") {
-    fileReservation(form.value);
-    alert("You have successfully reserved!");
+    if (form.value.pokemon.name == "") {
+      Swal.fire({
+        icon: "error",
+        title: "૮₍˶Ó﹏Ò ⑅₎ა\n*Please complete the form*",
+        buttonsStyling: false,
+        customClass: {
+          confirmButton: "text-white px-8 py-2 rounded-full bg-yellow-800",
+        },
+      });
+    } else {
+      fileReservation(form.value);
+      Swal.fire({
+        icon: "success",
+        title: "૮₍´｡ᵔ ꈊ ᵔ｡`₎ა\nYou have successfully reserved!",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
+      minDate.value = {
+        checkIn: new Date(),
+        checkOut: addOneDay(new Date()),
+      };
+      form.value.pokemon = {
+        name: "",
+        specie: "Bulbasaur",
+        age: 10,
+      };
+      form.value.reservation.checkInDate = convertDateToIDate(
+        minDate.value.checkIn
+      );
+      form.value.reservation.checkInTime = convertDateToTime(
+        minDate.value.checkIn
+      );
+      form.value.reservation.checkOutDate = convertDateToIDate(
+        minDate.value.checkOut
+      );
+      form.value.reservation.checkOutTime = convertDateToTime(
+        minDate.value.checkOut
+      );
+    }
   } else {
     alert("Something went wrong!");
   }
@@ -111,7 +181,7 @@ const submit = (event) => {
       tabindex="1"
     >
       <h2>Shelter Reservation</h2>
-      <p>Fill the form to reserve a Deluxe Care package.</p>
+      <p>Fill the form to reserve a {{ packageData.name }} package.</p>
       <h3>Pokemon Information</h3>
 
       <div class="form-section">
@@ -122,12 +192,17 @@ const submit = (event) => {
 
         <div class="pokemon-info">
           <label for="specie">Specie</label>
-          <input type="text" v-model="form.pokemon.specie" />
+          <select v-model="form.pokemon.specie">
+            <option disabled value="">Please select a Pokémon species</option>
+            <option v-for="specie in pokeSpecies" :value="specie">
+              {{ specie }}
+            </option>
+          </select>
         </div>
 
         <div class="pokemon-info">
           <label for="age">Age</label>
-          <input type="number" v-model="form.pokemon.age" />
+          <input type="number" min="8" max="100" v-model="form.pokemon.age" />
         </div>
       </div>
 
@@ -136,7 +211,11 @@ const submit = (event) => {
         <div class="reservation-info">
           <label for="checkIn">Check-In:</label>
           <div>
-            <input type="date" v-model="form.reservation.checkInDate" />
+            <input
+              type="date"
+              v-model="form.reservation.checkInDate"
+              :min="convertDateToIDate(minDate.checkIn)"
+            />
             <input type="time" v-model="form.reservation.checkInTime" />
           </div>
         </div>
@@ -144,7 +223,11 @@ const submit = (event) => {
         <div class="reservation-info">
           <label for="checkOut">Check-Out:</label>
           <div>
-            <input type="date" v-model="form.reservation.checkOutDate" />
+            <input
+              type="date"
+              v-model="form.reservation.checkOutDate"
+              :min="convertDateToIDate(minDate.checkOut)"
+            />
             <input type="time" v-model="form.reservation.checkOutTime" />
           </div>
         </div>
@@ -163,6 +246,10 @@ const submit = (event) => {
 </template>
 
 <style scoped>
+select {
+  @apply w-2/3 rounded-3xl text-center p-2 text-black;
+}
+
 input {
   @apply rounded-3xl text-center p-2 text-black;
 }
