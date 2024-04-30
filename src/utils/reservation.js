@@ -156,7 +156,7 @@ export const fileReservation = (form) => {
   form.id = generateNewId();
   form.state = "Pending";
   form.pokemon.id = pokemonId;
-  reservations.push(form);
+  reservations.push(JSON.parse(JSON.stringify(form)));
   console.log(JSON.stringify(reservations, null, 2));
 };
 
