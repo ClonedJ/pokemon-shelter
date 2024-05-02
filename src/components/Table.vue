@@ -22,19 +22,30 @@ const props = defineProps({
 });
 
 const filterCurrent = ref(props.filter.current);
+const search = ref("");
 const records = ref({});
 const changeFilter = (option) => {
   console.log(option);
   filterCurrent.value = option;
 };
 const filterRecords = () => {
+  search.value = "";
   records.value = props.records.filter(
     (record) => record.state.toLowerCase() === filterCurrent.value.toLowerCase()
+  );
+};
+const searchRecords = () => {
+  records.value = props.records.filter(
+    (record) =>
+      record.state.toLowerCase() === filterCurrent.value.toLowerCase() &&
+      (search.value === "" ||
+        record.id.toLowerCase().includes(search.value.toLowerCase()))
   );
 };
 filterRecords();
 watch(filterCurrent, filterRecords);
 watch(props.records, filterRecords);
+watch(search, searchRecords);
 
 const emit = defineEmits(["viewMore"]);
 
@@ -51,7 +62,15 @@ const getNestedProperty = (obj, path) => {
       :options="filter.options"
       @changeFilter="changeFilter"
     />
-    <SearchBar />
+    <div class="flex w-10/12 mb-6 justify-end relative">
+      <input
+        type="text"
+        class="rounded-3xl w-1/3 py-2 placeholder:italic placeholder:text-slate-400 px-4"
+        placeholder="Search for a record..."
+        v-model.trim="search"
+      />
+      <img alt="search icon" src="" class="absolute" />
+    </div>
   </div>
   <table class="w-10/12 space-y-4 flex flex-col *:bg-white *:rounded-2xl">
     <thead class="sticky w-full py-4">
