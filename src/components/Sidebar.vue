@@ -8,22 +8,22 @@ const items = [
   { label: "Reservations", route: "account/my-reservations" },
   { label: "Logout", route: "" },
 ];
-const colors = ["lime-800", "yellow-900", "amber-500"];
+const colors = ["lime-800", "yellow-800", "amber-500"];
 const router = useRoute();
 watch(router);
 </script>
 
 <template>
-  <div class="bg-white w-1/4 space-y-4 p-4 rounded-3xl">
-    <img src="/src/assets/images/snorlax.jpg" class="rounded-3xl w-full" />
-    <div class="flex flex-col">
+  <div class="flex flex-col bg-white w-1/3 rounded-3xl">
+    <img src="/src/assets/images/snorlax.jpg" class="rounded-3xl w-full p-4" />
+    <div class="flex flex-col grow justify-between">
       <RouterLink
         v-for="(item, index) in items"
         :key="index"
         @click="item.label == 'Logout' && logout()"
         :to="`/${item.route}`"
         :active-class="`bg-${colors[index]} text-white`"
-        :class="`block hover:bg-${colors[index]} text-center rounded-md hover:text-white py-2`"
+        :class="`block hover:bg-${colors[index]} hover:text-white py-2 h-full flex items-center justify-center -mr-6`"
       >
         {{ item.label }}
       </RouterLink>

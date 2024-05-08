@@ -71,7 +71,6 @@ const submit = (event) => {
             LOG IN
           </button>
         </div>
-        <!-- <p class="w-full text-center mt-8">Not yet a member? Sign up.</p> -->
       </form>
     </div>
     <div class="right-section w-1/2"></div>

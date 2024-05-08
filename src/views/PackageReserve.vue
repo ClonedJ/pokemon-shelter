@@ -158,7 +158,6 @@ const submit = (event) => {
       <div>
         <h1>{{ packageData.name }}</h1>
         <p>{{ packageData.description }}</p>
-        <br />
         <h2>Services:</h2>
         <div v-for="(service, j) in packageData.services" :key="j">
           <p>{{ j + 1 + ". " + service }}</p>
@@ -180,7 +179,7 @@ const submit = (event) => {
       id="reservationForm"
       tabindex="1"
     >
-      <h2>Shelter Reservation</h2>
+      <h1>Shelter Reservation</h1>
       <p>Fill the form to reserve a {{ packageData.name }} package.</p>
       <h3>Pokemon Information</h3>
 
@@ -209,7 +208,7 @@ const submit = (event) => {
       <h3>Reservation Information</h3>
       <div class="form-section">
         <div class="reservation-info">
-          <label for="checkIn">Check-In:</label>
+          <label for="checkIn">Check-In</label>
           <div>
             <input
               type="date"
@@ -221,8 +220,8 @@ const submit = (event) => {
         </div>
 
         <div class="reservation-info">
-          <label for="checkOut">Check-Out:</label>
-          <div>
+          <label for="checkOut">Check-Out</label>
+          <div class="">
             <input
               type="date"
               v-model="form.reservation.checkOutDate"
@@ -260,6 +259,15 @@ label {
 
 button {
   @apply text-white px-8 py-2 rounded-full;
+}
+
+h1 {
+  @apply text-4xl font-bold;
+}
+
+h2,
+h3 {
+  @apply text-xl font-bold;
 }
 
 h3 {

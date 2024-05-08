@@ -19,35 +19,24 @@ watch(router);
     class="z-50 w-full flex justify-center my-6"
   >
     <div class="bg-white w-10/12 rounded-full flex justify-between">
-      <!-- <RouterLink
-        v-for="(item, index) in items[currentUser ? currentUser.type : 'guest']"
-        :key="index"
-        @click="item == 'logout' && logout()"
-        :to="`/${item == 'home' || item == 'logout' ? '' : item}`"
-        :active-class="item == 'logout' ? '' : `bg-${colors[index]} text-white`"
-        :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-${colors[index]} hover:text-white`"
-      >
-        {{ item }}
-      </RouterLink> -->
-
       <RouterLink
         :to="`/`"
         active-class="bg-lime-800 text-white"
-        :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white`"
+        class="hover:bg-lime-800 nav-item"
       >
         Home
       </RouterLink>
       <RouterLink
         :to="currentUser.type == 'employee' ? '/reservations' : '/package'"
         active-class="bg-yellow-900 text-white"
-        :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-yellow-900 hover:text-white`"
+        class="hover:bg-yellow-800 nav-item"
       >
         {{ currentUser.type == "employee" ? "Reservations" : "Packages" }}
       </RouterLink>
       <RouterLink
         :to="'/gallery'"
         active-class="bg-amber-400 text-white"
-        :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-amber-400 hover:text-white`"
+        class="hover:bg-amber-400 nav-item"
         v-if="currentUser.type != 'employee'"
       >
         Gallery
@@ -55,7 +44,7 @@ watch(router);
       <RouterLink
         :to="currentUser.type == 'employee' ? '/trainers' : '/about'"
         active-class="bg-cyan-600 text-white"
-        :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-cyan-600 hover:text-white`"
+        class="hover:bg-cyan-600 nav-item"
       >
         {{ currentUser.type == "employee" ? "Trainers" : "About" }}
       </RouterLink>
@@ -63,7 +52,7 @@ watch(router);
         v-if="currentUser.type == 'trainer'"
         :to="`/account/my-profile`"
         active-class="bg-lime-800 text-white"
-        :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white flex justify-center`"
+        class="py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white flex justify-center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +73,7 @@ watch(router);
         @click="currentUser.type != 'guest' && logout()"
         :to="`/login`"
         active-class="bg-lime-800 text-white"
-        :class="`py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white`"
+        class="hover:bg-lime-800 nav-item"
         v-if="currentUser.type != 'trainer'"
       >
         {{ currentUser.type != "guest" ? "Logout" : "Login" }}
@@ -92,3 +81,9 @@ watch(router);
     </div>
   </div>
 </template>
+
+<style scoped>
+.nav-item {
+  @apply py-4 w-full text-center uppercase font-semibold rounded-full  hover:text-white transition-colors duration-150 ease-linear;
+}
+</style>

@@ -72,7 +72,7 @@ const router = createRouter({
     {
       path: "/account/my-reservations",
       name: "account/my-reservations",
-      component: MyReservationsView,
+      component: MyProfileView,
       meta: { requiredType: ["trainer"] },
     },
     {
