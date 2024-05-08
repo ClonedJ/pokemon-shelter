@@ -39,8 +39,8 @@ const submit = (event) => {
 </script>
 
 <template>
-  <div class="bg-image bg-image-1"></div>
   <div class="flex grow w-full">
+    <!-- <div class="bg-image bg-image-1"></div> -->
     <div class="w-1/2 p-16 flex">
       <form
         class="bg-white w-full h-full p-8 rounded-2xl flex flex-col bg-opacity-80"

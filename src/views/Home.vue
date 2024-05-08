@@ -4,7 +4,6 @@ import { currentUser } from "@/utils/user.js";
 import { getStateReservationsCount } from "@/utils/reservation";
 </script>
 <template>
-  <div class="bg-image bg-image-1"></div>
   <div
     class="flex grow w-10/12 mb-8 overflow-auto space-x-8 rounded-3xl bg-white p-10 justify-between"
     v-if="currentUser.type != 'employee'"

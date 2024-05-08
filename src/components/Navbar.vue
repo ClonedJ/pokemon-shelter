@@ -3,12 +3,6 @@ import { RouterLink, useRoute } from "vue-router";
 import { currentUser, logout } from "@/utils/user";
 import { watch } from "vue";
 
-const items = {
-  employee: ["home", "reservations", "trainers", "logout"],
-  trainer: ["home", "package", "gallery", "about", "logout"],
-  guest: ["home", "package", "gallery", "about", "login"],
-};
-
 const router = useRoute();
 watch(router);
 </script>

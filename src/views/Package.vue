@@ -12,16 +12,16 @@ const submit = (event, packageName) => {
 };
 </script>
 <template>
-  <div class="bg-image bg-image-2"></div>
-  <div class="w-10/12 flex grow overflow-auto">
+  <div class="w-10/12 mb-8 flex grow overflow-auto">
     <div
-      class="w-full h-full grid justify-between gap-8 grid-cols-2 items-center rounded-2xl"
+      class="w-full h-full grid justify-between gap-8 grid-cols-2 items-center rounded-2xl auto-cols-min"
     >
       <ListItem
         v-for="(packageData, i) in packages"
         :key="i"
         @click="submit($event, packageData.name)"
         :item-name="packageData.name"
+        :item-img="packageData.img"
       >
         <p>{{ packageData.description }}</p>
       </ListItem>

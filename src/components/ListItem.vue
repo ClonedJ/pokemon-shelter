@@ -8,6 +8,10 @@ defineProps({
     type: String,
     required: true,
   },
+  itemImg: {
+    type: String,
+    required: true,
+  },
 });
 </script>
 
@@ -15,11 +19,7 @@ defineProps({
   <div
     class="flex flex-col h-full cursor-pointer bg-white rounded-3xl space-y-4 p-6 text-center"
   >
-    <img
-      :alt="`${itemName}`"
-      :src="`/src/assets/images/pokemon-conceirge-gp.jpg`"
-      class="h-2/3 rounded-3xl"
-    />
+    <img :alt="`${itemName}`" :src="itemImg" class="h-2/3 rounded-3xl" />
     <div class="w-full space-y-2">
       <h1 class="text-xl font-bold">{{ itemName }}</h1>
       <!-- <p class="">

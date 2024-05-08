@@ -63,7 +63,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  @apply h-[100svh] w-[100svw] fixed -z-10;
+  @apply h-[100svh] w-[100svw] fixed -z-10 left-0 top-0;
 }
 
 .bg-image-1 {

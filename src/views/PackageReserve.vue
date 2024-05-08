@@ -143,7 +143,6 @@ const submit = (event) => {
 </script>
 
 <template>
-  <div class="bg-image bg-image-2"></div>
   <div
     class="flex grow w-10/12 rounded-3xl flex-col mb-8 overflow-auto items-center"
   >
@@ -151,22 +150,30 @@ const submit = (event) => {
       class="flex space-x-8 h-full z-10 rounded-2xl bg-white p-4 justify-between"
     >
       <img
-        alt=""
-        src="/src/assets/images/snorlax.jpg"
-        class="h-full rounded-3xl"
+        :alt="packageData.img"
+        :src="packageData.img"
+        class="rounded-3xl w-1/2 h-full bg-cover bg-fixed"
       />
-      <div>
-        <h1>{{ packageData.name }}</h1>
-        <p>{{ packageData.description }}</p>
-        <h2>Services:</h2>
-        <div v-for="(service, j) in packageData.services" :key="j">
-          <p>{{ j + 1 + ". " + service }}</p>
+      <div class="w-1/2 h-full flex flex-col space-y-4 py-4">
+        <div class="space-y-2">
+          <h1>{{ packageData.name }}</h1>
+          <p>{{ packageData.description }}</p>
+        </div>
+        <div>
+          <h2 class="mb-2">Services:</h2>
+          <div
+            v-for="(service, j) in packageData.services"
+            :key="j"
+            class="last-of-type:mb-4"
+          >
+            <p>{{ j + 1 + ". " + service }}</p>
+          </div>
         </div>
         <button
           type="button"
           v-show="!showModal"
           @click="openModal"
-          class="bg-amber-400"
+          class="bg-amber-400 self-start mt-4"
         >
           Reserve
         </button>
@@ -175,12 +182,14 @@ const submit = (event) => {
 
     <form
       v-show="showModal"
-      class="w-full text-white -mt-12 pt-20 p-8 bg-yellow-900 rounded-3xl"
+      class="w-full text-white -mt-12 pt-20 p-10 bg-yellow-900 rounded-3xl"
       id="reservationForm"
       tabindex="1"
     >
-      <h1>Shelter Reservation</h1>
-      <p>Fill the form to reserve a {{ packageData.name }} package.</p>
+      <div class="space-y-2 mb-8">
+        <h1>Shelter Reservation</h1>
+        <p>Fill the form to reserve a {{ packageData.name }} package.</p>
+      </div>
       <h3>Pokemon Information</h3>
 
       <div class="form-section">
@@ -232,7 +241,7 @@ const submit = (event) => {
         </div>
       </div>
 
-      <div class="space-x-4 flex justify-end">
+      <div class="space-x-4 flex justify-end mt-4">
         <button type="button" @click="closeModal()" class="bg-lime-800">
           Cancel
         </button>
@@ -271,7 +280,7 @@ h3 {
 }
 
 h3 {
-  @apply bg-yellow-600 -mx-8 px-8 py-4;
+  @apply bg-yellow-600 -mx-10 px-8 py-4;
 }
 
 .form-section {

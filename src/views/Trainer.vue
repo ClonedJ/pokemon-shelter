@@ -17,6 +17,5 @@ const filter = {
 const trainers = users.filter((user) => user.type == "trainer");
 </script>
 <template>
-  <div class="bg-image bg-image-4"></div>
   <Table :filter="filter" :records="trainers" :fields="fields" />
 </template>

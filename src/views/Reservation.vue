@@ -88,7 +88,6 @@ const viewMore = (record) => {
 </script>
 
 <template>
-  <div class="bg-image bg-image-2"></div>
   <Table
     :fields="fields"
     :records="reservations"
@@ -96,6 +95,4 @@ const viewMore = (record) => {
     :hasViewMore="true"
     @viewMore="viewMore"
   />
-  <!-- @handleFirstButton="acceptReservation"
-    @handleSecondButton="rejectReservation" -->
 </template>
