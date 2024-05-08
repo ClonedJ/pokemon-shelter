@@ -56,7 +56,11 @@ watch(router);
         v-if="currentUser.type == 'trainer'"
         :to="`/account/my-profile`"
         active-class="bg-lime-800 text-white"
-        class="py-4 w-full text-center uppercase font-semibold rounded-full hover:bg-lime-800 hover:text-white flex justify-center"
+        :class="`${
+          router.name != 'account/my-reservations'
+            ? 'hover:bg-lime-800 hover:text-white'
+            : 'bg-lime-800 text-white'
+        } py-4 w-full text-center uppercase font-semibold rounded-full flex justify-center`"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
