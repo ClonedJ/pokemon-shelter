@@ -36,8 +36,10 @@ import { getStateReservationsCount } from "@/utils/reservation";
     <div class="space-y-4 h-1/2">
       <h1 class="font-bold text-6xl">Welcome, Staff!</h1>
       <p class="text-xl">
-        Welcome to our Pokémon shelter, where trainers and their beloved Pokémon
-        companions find a safe haven and caring community.
+        Welcome to the Pokémon Shelter Employee Suite! Here, our dedicated team
+        of Pokémon caretakers and specialized trainers can access all the tools
+        and resources they need to provide the best care for our beloved Pokémon
+        residents.
       </p>
     </div>
     <div
