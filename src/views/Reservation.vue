@@ -27,9 +27,7 @@ const viewMore = (record) => {
   if (record.state == "Reserved") {
     tasks += "<p>Activities:</p>";
     tasks +=
-      record.tasks
-        .map((task, i) => `<p>[${i + 1}] ${task.name}</p>`)
-        .join("") ?? "";
+      record.tasks.map((task, i) => `<p>[${i + 1}] ${task}</p>`).join("") ?? "";
   }
   const html = `
       <div class='text-start'>

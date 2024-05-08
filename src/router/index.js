@@ -4,7 +4,6 @@ import PackageView from "@/views/Package.vue";
 import PackageReserveView from "@/views/PackageReserve.vue";
 import GalleryView from "@/views/Gallery.vue";
 import AboutView from "@/views/About.vue";
-import TaskView from "@/views/Task.vue";
 import TrainerView from "@/views/Trainer.vue";
 import ReservationView from "@/views/Reservation.vue";
 import MyProfileView from "@/views/Account/MyProfile.vue";
@@ -44,12 +43,6 @@ const router = createRouter({
       name: "about",
       component: AboutView,
       meta: { requiredType: ["guest", "trainer"] },
-    },
-    {
-      path: "/tasks",
-      name: "tasks",
-      component: TaskView,
-      meta: { requiredType: ["employee"] },
     },
     {
       path: "/trainers",
