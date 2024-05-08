@@ -1,20 +1,20 @@
 <script setup>
 const pics = [
-  "Backyard(_).png",
-  "Spa-ing.png",
-  "Beach.png",
-  "Mountain.png",
-  "Camping.png",
-  "PokemonConcierge.png",
-  "PokemonSaBeach.png",
-  "Pool.png",
-  "Reception.png",
-  "Zipline.png",
-  "Bridge.png",
-  "ResortAtNight.png",
-  "HillSurfing.png",
-  "LeavingResort.png",
-  "PokeFriends2.png",
+  "Backyard(_)",
+  "Spa-ing",
+  "Beach",
+  "Mountain",
+  "Camping",
+  "PokemonConcierge",
+  "PokemonSaBeach",
+  "Pool",
+  "Reception",
+  "Zipline",
+  "Bridge",
+  "ResortAtNight",
+  "HillSurfing",
+  "LeavingResort",
+  "PokeFriends2",
 ];
 </script>
 <template>
@@ -23,7 +23,7 @@ const pics = [
   >
     <figure
       v-for="(pic, index) in pics"
-      class="bg-white pb-16 px-2 py-2 relative flex flex-col items-center"
+      class="bg-white px-2 py-2 relative flex flex-col items-center shadow-md"
       :key="index"
     >
       <img
@@ -31,7 +31,10 @@ const pics = [
         class="absolute -mt-5"
         width="50"
       />
-      <img :src="`/src/assets/images/gallery/` + pic" />
+      <div class="flex flex-col items-center">
+        <img :src="`/src/assets/images/gallery/${pic}.png`" />
+        <figcaption class="py-6">{{ pic }}</figcaption>
+      </div>
     </figure>
   </div>
 </template>

@@ -43,13 +43,17 @@ import { getStateReservationsCount } from "@/utils/reservation";
     <div
       class="flex bg-lime-700 h-1/2 text-white p-4 rounded-3xl *:rounded-3xl justify-center space-x-4"
     >
-      <div class="bg-yellow-800 w-1/6 p-2">
-        <p>Total no. of pending reservations</p>
-        <p>{{ getStateReservationsCount("Pending") }}</p>
+      <div class="bg-yellow-800 w-1/6 space-y-2">
+        <p class="px-2 pt-4">Total no. of pending reservations</p>
+        <p class="text-6xl font-semibold">
+          {{ getStateReservationsCount("Pending") }}
+        </p>
       </div>
-      <div class="bg-red-700 w-1/6 p-2">
-        <p>Total no. of reserved reservations</p>
-        <p>{{ getStateReservationsCount("Reserved") }}</p>
+      <div class="bg-red-700 w-1/6 space-y-2">
+        <p class="px-2 pt-4">Total no. of reserved reservations</p>
+        <p class="text-6xl font-semibold">
+          {{ getStateReservationsCount("Reserved") }}
+        </p>
       </div>
       <div class="w-2/4 flex flex-col space-y-3 *:rounded-3xl">
         <h1 class="bg-amber-500 text-lg py-1 font-semibold">
@@ -61,9 +65,12 @@ import { getStateReservationsCount } from "@/utils/reservation";
             src="/src/assets/images/haru_pfp.jpg"
             class="rounded-3xl w-1/6"
           />
-          <div>
-            <p>EMP000001</p>
-            <p>Haru</p>
+          <div class="flex flex-col text-start">
+            <p class="font-bold">Haru</p>
+            <p>
+              A compassionate and dedicated employee who highly values the
+              customers.
+            </p>
           </div>
         </div>
       </div>
