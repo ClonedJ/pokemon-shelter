@@ -29,7 +29,11 @@ watch(router);
       <RouterLink
         :to="currentUser.type == 'employee' ? '/reservations' : '/package'"
         active-class="bg-yellow-900 text-white"
-        class="hover:bg-yellow-800 nav-item"
+        :class="`${
+          router.name != 'package-reserve'
+            ? 'hover:bg-yellow-800'
+            : 'bg-yellow-900 text-white'
+        } nav-item`"
       >
         {{ currentUser.type == "employee" ? "Reservations" : "Packages" }}
       </RouterLink>
