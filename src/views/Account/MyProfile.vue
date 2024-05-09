@@ -27,10 +27,7 @@ watch(router);
 <template>
   <div class="flex grow w-10/12 mb-8 overflow-auto bg-white rounded-3xl">
     <div class="flex flex-col bg-white w-1/3 rounded-3xl">
-      <img
-        src="/src/assets/images/snorlax.jpg"
-        class="rounded-3xl w-full p-4"
-      />
+      <img :src="profile.pic" class="rounded-3xl w-full p-4" />
       <div class="flex flex-col grow justify-between">
         <RouterLink
           v-for="(item, index) in items"

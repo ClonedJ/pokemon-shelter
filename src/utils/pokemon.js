@@ -3,7 +3,7 @@ import { reactive } from "vue";
 export const pokemons = reactive([
   {
     id: "PKM00001",
-    name: "Pikachuchu",
+    name: "Shy Pikachu",
     specie: "Pikachu",
     age: 13,
   },
@@ -12,6 +12,18 @@ export const pokemons = reactive([
     name: "Pikaaa",
     specie: "Pikachu",
     age: 15,
+  },
+  {
+    id: "PKM00003",
+    name: "Snorlachuchu",
+    specie: "Snorlax",
+    age: 13,
+  },
+  {
+    id: "PKM00004",
+    name: "Muuuuck",
+    specie: "Muk",
+    age: 13,
   },
 ]);
 
