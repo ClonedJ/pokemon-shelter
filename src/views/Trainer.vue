@@ -11,7 +11,7 @@ const fields = [
 
 const filter = {
   options: ["Active", "Inactive"],
-  current: "Active",
+  current: "All",
 };
 
 const trainers = users.filter((user) => user.type == "trainer");

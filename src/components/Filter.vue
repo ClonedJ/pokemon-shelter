@@ -59,6 +59,20 @@ const showOptions = ref(false);
       >
         <div class="py-1" role="none">
           <button
+            @click="
+              {
+                $emit('changeFilter', 'All');
+                showOptions = !showOptions;
+              }
+            "
+            class="text-gray-700 block px-4 py-2 text-sm"
+            role="menuitem"
+            tabindex="-1"
+            id="menu-item-1"
+          >
+            All
+          </button>
+          <button
             v-for="(option, i) in options"
             @click="
               {
@@ -69,7 +83,7 @@ const showOptions = ref(false);
             class="text-gray-700 block px-4 py-2 text-sm"
             role="menuitem"
             tabindex="-1"
-            :id="'menu-item-' + i"
+            :id="'menu-item-' + i + 2"
           >
             {{ option }}
           </button>

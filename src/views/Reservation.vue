@@ -19,7 +19,7 @@ const fields = [
 
 const filter = {
   options: ["Pending", "Reserved", "Completed", "Rejected"],
-  current: "Pending",
+  current: "All",
 };
 
 const viewMore = (record) => {
@@ -31,6 +31,7 @@ const viewMore = (record) => {
   }
   const html = `
       <div class='text-start'>
+        <p>Status: ${record.state}</p>
         <p>Package: ${record.package}</p>
         <p>Trainer: ${record.user.creds.username}</p>
         <p>Pokemon: ${record.pokemon.name}</p>

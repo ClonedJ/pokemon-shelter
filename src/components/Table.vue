@@ -30,17 +30,30 @@ const changeFilter = (option) => {
 };
 const filterRecords = () => {
   search.value = "";
-  records.value = props.records.filter(
-    (record) => record.state.toLowerCase() === filterCurrent.value.toLowerCase()
-  );
+  if (filterCurrent.value == "All") {
+    records.value = props.records;
+  } else {
+    records.value = props.records.filter(
+      (record) =>
+        record.state.toLowerCase() === filterCurrent.value.toLowerCase()
+    );
+  }
 };
 const searchRecords = () => {
-  records.value = props.records.filter(
-    (record) =>
-      record.state.toLowerCase() === filterCurrent.value.toLowerCase() &&
-      (search.value === "" ||
-        record.id.toLowerCase().includes(search.value.toLowerCase()))
-  );
+  if (filterCurrent.value == "All") {
+    records.value = props.records.filter(
+      (record) =>
+        search.value === "" ||
+        record.id.toLowerCase().includes(search.value.toLowerCase())
+    );
+  } else {
+    records.value = props.records.filter(
+      (record) =>
+        record.state.toLowerCase() === filterCurrent.value.toLowerCase() &&
+        (search.value === "" ||
+          record.id.toLowerCase().includes(search.value.toLowerCase()))
+    );
+  }
 };
 filterRecords();
 watch(filterCurrent, filterRecords);
