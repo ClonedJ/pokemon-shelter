@@ -106,6 +106,7 @@ const submit = (event) => {
       });
     } else {
       fileReservation(form.value);
+      showModal.value = false;
       Swal.fire({
         icon: "success",
         title: "૮₍´｡ᵔ ꈊ ᵔ｡`₎ა\nYou have successfully reserved!",
@@ -113,6 +114,7 @@ const submit = (event) => {
         timer: 2000,
         timerProgressBar: true,
       });
+
       minDate.value = {
         checkIn: new Date(),
         checkOut: addOneDay(new Date()),
