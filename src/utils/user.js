@@ -29,6 +29,7 @@ export const users = [
     profile: {
       firstName: "Nao",
       lastName: "Matsuda",
+      displayName: "Nao Matsuda",
       email: "naomatsuda@gmail.com",
       phoneNum: "09123456788",
       street: "Numbus St.",
@@ -49,6 +50,7 @@ export const users = [
     profile: {
       firstName: "John",
       lastName: "Doe",
+      displayName: "John Doe",
       email: "johndoe@gmail.com",
       phoneNum: "09123456787",
       street: "Kalye St.",
@@ -69,6 +71,7 @@ export const users = [
     profile: {
       firstName: "Jane",
       lastName: "Doe",
+      displayName: "Jane Doe",
       email: "janedoe@gmail.com",
       phoneNum: "09123456786",
       street: "Kalye St.",
@@ -89,6 +92,7 @@ export const users = [
     profile: {
       firstName: "Isamu",
       lastName: "Akai",
+      displayName: "Isamu Akai",
       email: "isamuakai@gmail.com",
       phoneNum: "09123456785",
       street: "Numbus St.",
@@ -109,6 +113,7 @@ export const users = [
     profile: {
       firstName: "Vedal",
       lastName: "AI",
+      displayName: "Vedal AI",
       email: "vedalai@gmail.com",
       phoneNum: "09123456784",
       street: "Ai St.",

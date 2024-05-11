@@ -11,7 +11,7 @@ import { updateUserData } from "@/utils/user";
 
 const fields = [
   { label: "id", data: "id" },
-  { label: "user", data: "user.creds.username" },
+  { label: "trainer", data: "user.profile.displayName" },
   { label: "package", data: "package" },
   { label: "check in", data: "reservation.checkInDate" },
   { label: "check out", data: "reservation.checkOutDate" },
@@ -33,7 +33,7 @@ const viewMore = (record) => {
       <div class='text-start'>
         <p>Status: ${record.state}</p>
         <p>Package: ${record.package}</p>
-        <p>Trainer: ${record.user.creds.username}</p>
+        <p>Trainer: ${record.user.profile.displayName}</p>
         <p>Pokemon: ${record.pokemon.name}</p>
         ${tasks}
         <p>Check In: ${record.reservation.checkInDate}</p>
