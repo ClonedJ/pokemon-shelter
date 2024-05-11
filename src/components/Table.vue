@@ -1,7 +1,5 @@
 <script setup>
-import SearchBar from "./SearchBar.vue";
 import Filter from "./Filter.vue";
-import Swal from "sweetalert2";
 import { ref, watch } from "vue";
 
 const props = defineProps({
