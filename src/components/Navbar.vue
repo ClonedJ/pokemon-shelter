@@ -12,7 +12,9 @@ watch(router);
     v-if="router.name != 'login'"
     class="z-50 w-full flex justify-center my-6"
   >
-    <div class="bg-white w-10/12 rounded-full flex justify-between">
+    <div
+      class="bg-white w-10/12 bg-opacity-80 rounded-full flex justify-between"
+    >
       <RouterLink
         :to="`/`"
         active-class="bg-lime-800 text-white"

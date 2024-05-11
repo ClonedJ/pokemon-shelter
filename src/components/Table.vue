@@ -99,7 +99,9 @@ const getNestedProperty = (obj, path) => {
         </svg>
       </div>
     </div>
-    <table class="w-10/12 space-y-4 flex flex-col *:bg-white *:rounded-2xl">
+    <table
+      class="w-10/12 space-y-4 flex flex-col *:bg-white *:rounded-2xl *:bg-opacity-80"
+    >
       <thead class="sticky w-full py-4">
         <tr class="">
           <th
@@ -112,7 +114,7 @@ const getNestedProperty = (obj, path) => {
           <th v-if="props.hasViewMore"></th>
         </tr>
       </thead>
-      <tbody class="even:bg-gray-100 *:py-4 *:border-b-2">
+      <tbody class="*:py-4 *:border-b-2">
         <tr v-for="(record, i) in records" :key="i">
           <td v-for="(field, j) in fields" :key="j">
             {{ getNestedProperty(record, field.data) }}

@@ -5,7 +5,7 @@ import { getStateReservationsCount } from "@/utils/reservation";
 </script>
 <template>
   <div
-    class="flex grow w-10/12 mb-8 overflow-auto space-x-8 rounded-3xl bg-white p-10 justify-between"
+    class="flex grow w-10/12 mb-8 overflow-auto space-x-8 rounded-3xl bg-white p-10 justify-between bg-opacity-80"
     v-if="currentUser.type != 'employee'"
   >
     <div class="space-y-8 h-full flex flex-col justify-center">
@@ -30,7 +30,7 @@ import { getStateReservationsCount } from "@/utils/reservation";
     />
   </div>
   <div
-    class="flex flex-col grow w-10/12 mb-8 rounded-3xl bg-white p-10 justify-between items-center text-center"
+    class="flex flex-col grow w-10/12 mb-8 rounded-3xl bg-white p-10 justify-between items-center text-center bg-opacity-80"
     v-else
   >
     <div class="space-y-4 h-1/2">

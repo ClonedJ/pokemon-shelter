@@ -10,7 +10,7 @@ const team = [
 <template>
   <div class="flex flex-col w-full grow items-center">
     <div
-      class="flex grow w-10/12 mb-8 space-x-8 rounded-3xl bg-white p-8 justify-between"
+      class="flex grow w-10/12 mb-8 space-x-8 rounded-3xl bg-white p-8 justify-between bg-opacity-80"
     >
       <img
         alt="Welcome"
@@ -33,7 +33,7 @@ const team = [
       </div>
     </div>
     <div
-      class="flex flex-col space-y-8 p-8 items-center w-10/12 space-x-8 rounded-3xl bg-white mb-8"
+      class="flex flex-col space-y-8 p-8 items-center w-10/12 space-x-8 rounded-3xl bg-opacity-80 bg-white mb-8"
     >
       <h2 class="font-bold text-2xl">Meet the Team</h2>
       <div class="grid grid-cols-5 gap-4 justify-center">
