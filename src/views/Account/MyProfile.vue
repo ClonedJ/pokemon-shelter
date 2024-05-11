@@ -123,24 +123,13 @@ watch(router);
       >
         <p>{{ record.id }}</p>
         <p>Pokemon: {{ record.pokemon.name }}</p>
+        <p>Specie: {{ record.pokemon.specie }}</p>
         <p>Package Name: {{ record.package }}</p>
         <p>
           Duration:
           {{ record.reservation.checkInDate }} to
           {{ record.reservation.checkOutDate }}
         </p>
-        <div class="progress">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            style="width: 25%"
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          >
-            Description
-          </div>
-        </div>
       </div>
     </div>
   </div>
