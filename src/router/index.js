@@ -6,7 +6,7 @@ import GalleryView from "@/views/Gallery.vue";
 import AboutView from "@/views/About.vue";
 import TrainerView from "@/views/Trainer.vue";
 import ReservationView from "@/views/Reservation.vue";
-import MyProfileView from "@/views/Account/MyProfile.vue";
+import MyProfileView from "@/views/MyProfile.vue";
 import LoginView from "@/views/Login.vue";
 import { currentUser } from "@/utils/user";
 

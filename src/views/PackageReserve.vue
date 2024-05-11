@@ -147,7 +147,7 @@ const submit = (event) => {
     class="flex grow w-10/12 rounded-3xl flex-col mb-8 overflow-auto items-center"
   >
     <div
-      class="flex space-x-8 h-full z-10 rounded-2xl bg-white p-4 justify-between"
+      class="flex space-x-8 h-full z-10 rounded-2xl bg-white p-4 justify-between bg-opacity-80"
     >
       <img
         :alt="packageData.img"
